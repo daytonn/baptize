@@ -22,10 +22,6 @@ load test_helper
     [ "$RED" == "$(tput setaf 1)" ]
 }
 
-@test "it has a ORANGE variable" {
-    [ "$ORANGE" == "$(tput setaf 9)" ]
-}
-
 @test "it has a GREEN variable" {
     [ "$GREEN" == "$(tput setaf 2)" ]
 }
@@ -58,10 +54,6 @@ load test_helper
     [ "$REDB" == "$BOLD$RED" ]
 }
 
-@test "it has a ORANGEB variable" {
-    [ "$ORANGEB" == "$BOLD$ORANGE" ]
-}
-
 @test "it has a GREENB variable" {
     [ "$GREENB" == "$BOLD$GREEN" ]
 }
@@ -84,10 +76,6 @@ load test_helper
 
 @test "it has a BG_WHITE variable" {
     [ "$BG_WHITE" == "$(tput setab 7)" ]
-}
-
-@test "it has a BG_ORANGE variable" {
-    [ "$BG_ORANGE" == "$(tput setab 9)" ]
 }
 
 @test "it has a BG_VIOLET variable" {
@@ -368,14 +356,6 @@ load test_helper
 
 @test "it has a redb function to colorize a string" {
   [ "$(redb 'test')" == "${REDB}test${CEND}" ]
-}
-
-@test "it has a orange function to colorize a string" {
-  [ "$(orange 'test')" == "${ORANGE}test${CEND}" ]
-}
-
-@test "it has a orangeb function to colorize a string" {
-  [ "$(orangeb 'test')" == "${ORANGEB}test${CEND}" ]
 }
 
 @test "it has a green function to colorize a string" {
