@@ -7,6 +7,8 @@ About
 -----
 baptize is a small bash framework for making sweet prompts that Jesus would be proud of.
 
+![](https://raw.githubusercontent.com/daytonn/baptize/master/screenshot.png)
+
 Installation
 ------------
 
