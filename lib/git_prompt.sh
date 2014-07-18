@@ -65,15 +65,17 @@ function wd_without_dev_path {
 function git_stats_count {
   local status="$1"
   local status_prompt
-  local modified=`echo -e "$status" | egrep -o "^\s?M" | wc -l | tr -d ' '`
-  local added=`echo -e "$status" | egrep -o "^\?\?" | wc -l | tr -d ' '`
-  local deleted=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
-  local separator="${GSTATS_SEPERATOR_COLOR}:"
-  status_prompt+="$GMODIFIED_COLOR $modified"
-  status_prompt+="$separator"
-  status_prompt+="$GADDED_COLOR$added"
-  status_prompt+="$separator"
-  status_prompt+="$GDELETED_COLOR$deleted$CEND"
+  if [ -n "$status" ]; then
+    local modified=`echo -e "$status" | egrep -o "^\s?M" | wc -l | tr -d ' '`
+    local added=`echo -e "$status" | egrep -o "^\?\?" | wc -l | tr -d ' '`
+    local deleted=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
+    local separator="${GSTATS_SEPERATOR_COLOR}:"
+    status_prompt+="$GMODIFIED_COLOR $modified"
+    status_prompt+="$separator"
+    status_prompt+="$GADDED_COLOR$added"
+    status_prompt+="$separator"
+    status_prompt+="$GDELETED_COLOR$deleted$CEND"
+  fi
   printf "$status_prompt"
 }
 
