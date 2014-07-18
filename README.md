@@ -3,6 +3,10 @@ baptize
 
 Sure, your shell is bourne again... but is it baptized?
 
+About
+-----
+baptize is a small bash framework for making sweet prompts that Jesus would be proud of.
+
 Installation
 ------------
 
