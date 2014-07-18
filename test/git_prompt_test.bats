@@ -62,16 +62,6 @@ load test_helper
   [ "$GSTATS_SEPERATOR_COLOR" == "test" ]
 }
 
-@test "it has a development path variable" {
-  [ -n "$DEV_PATH" ]
-}
-
-@test "it defers if the development path is already set" {
-  DEV_PATH="test"
-  source "$ROOT/lib/git_prompt.sh"
-  [ "$DEV_PATH" == "test" ]
-}
-
 @test "it has a pull icon" {
   [ "$GPULL_ICON" == "\[ ⇣ \]" ]
 }
@@ -105,12 +95,6 @@ load test_helper
 @test "is_git_repository determines if currently in a git repo" {
   run is_git_repository
   [ "$status" -eq 0 ]
-}
-
-@test "wd_without_dev_path removes the $DEV_PATH from the working directory" {
-  run wd_without_dev_path
-  [ "$status" -eq 0 ]
-  [ "$output" = " baptize " ]
 }
 
 @test "git_stats_count returns a modified count in a formatted status block" {
@@ -161,4 +145,10 @@ load test_helper
   run git_project_name
   [ "$status" -eq 0 ]
   [ "$output" = "baptize" ]
+}
+
+@test "git_wd removes everything preceding the git root in the path" {
+  run git_wd
+  [ "$status" -eq 0 ]
+  [ "$output" = " baptize " ]
 }

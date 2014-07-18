@@ -43,22 +43,25 @@ if [ -z "$GSTATS_SEPERATOR_COLOR" ]; then
   GSTATS_SEPERATOR_COLOR="$BLUEF_YELLOWB"
 fi
 
-DEV_PATH="$DEV_PATH"
-if [ -z "$DEV_PATH" ]; then
-  DEV_PATH="Development"
-fi
-
 function is_git_repository {
   git branch > /dev/null 2>&1
 }
 
-function wd_without_dev_path {
-  local wd
-  if [[ $PWD == *"${DEV_PATH}"* ]]; then
-    wd="${PWD/${HOME}\/${DEV_PATH}\//}"
-  else
-    wd="${PWD/${HOME}\//}"
-  fi
+function git_wd {
+  local dir="$PWD"
+  local project_name=`git_project_name`
+  local path_found="no"
+  local wd="$project_name"
+
+  IFS="/" read -ra ADDR <<< "$dir"
+  for i in "${ADDR[@]}"; do
+    if [ "$path_found" == "yes" ]; then
+      wd="$wd/$i"
+    fi
+    if [ "$i" == "$project_name" ]; then
+      path_found="yes"
+    fi
+  done
   printf " $wd "
 }
 
@@ -115,10 +118,9 @@ function git_prompt {
     local stats_count=`git_stats_count "$status"`
     local status_icon=`git_status_icon "$full_status"`
     local status_color=`git_status_color "$full_status"`
-    local wd=`wd_without_dev_path`
-    local project_name=" `git_project_name` "
+    local git_wd=`git_wd`
 
-    PS1="$PROMPT_ICON$stats_count$status_icon$status_color$branch$CEND$PROMPT_COLOR$wd$PROMPT_ARROW$CEND "
+    PS1="$PROMPT_ICON$stats_count$status_icon$status_color$branch$CEND$PROMPT_COLOR$git_wd$PROMPT_ARROW$CEND "
   else
     PS1="$PROMPT"
   fi
