@@ -1,7 +1,6 @@
-
 BAPTIZE_CONFIG="$BAPTIZE_CONFIG"
 if [ -z "$BAPTIZE_CONFIG" ]; then
-  BAPTIZE_CONFIG="$HOME/.baptize"
+  BAPTIZE_CONFIG="$HOME/.holywater"
 fi
 
 if [ -f "$BAPTIZE_CONFIG" ]; then

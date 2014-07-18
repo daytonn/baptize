@@ -116,11 +116,29 @@ function git_prompt {
     local status_icon=`git_status_icon "$full_status"`
     local status_color=`git_status_color "$full_status"`
     local wd=`wd_without_dev_path`
+    local project_name=" `git_project_name` "
 
     PS1="$PROMPT_ICON$stats_count$status_icon$status_color$branch$CEND$PROMPT_COLOR$wd$PROMPT_ARROW$CEND "
   else
     PS1="$PROMPT"
   fi
+}
+
+function git_project_name {
+  local project_name
+  local dir="$PWD"
+
+  until [[ -z "$dir" ]]; do
+    if [ -d "$dir/.git" ]; then
+      IFS='/' read -ra ADDR <<< "$dir"
+      for i in "${ADDR[@]}"; do
+        project_name="$i"
+      done
+      break
+    fi
+    dir="${dir%/*}"
+  done
+  printf "$project_name"
 }
 
 export PROMPT_COMMAND="git_prompt"

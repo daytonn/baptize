@@ -156,3 +156,9 @@ load test_helper
   [ "$status" -eq 0 ]
   [ "$output" = `printf "$GMODIFIED_COLOR$GPUSH_ICON$GMODIFIED_COLOR$GPULL_ICON$CEND"` ]
 }
+
+@test "git_project_name function returns the git project folder name" {
+  run git_project_name
+  [ "$status" -eq 0 ]
+  [ "$output" = "baptize" ]
+}

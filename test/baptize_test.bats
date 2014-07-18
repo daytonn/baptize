@@ -3,7 +3,7 @@
 load test_helper
 
 @test "it has a baptize config file variable" {
-  [ "$BAPTIZE_CONFIG" == "$HOME/.baptize" ]
+  [ "$BAPTIZE_CONFIG" == "$HOME/.holywater" ]
 }
 
 @test "it defers if the baptize config file variable is set" {
@@ -13,7 +13,7 @@ load test_helper
 }
 
 @test "it loads the baptize config file" {
-  BAPTIZE_CONFIG="$ROOT/test/fixtures/.baptize"
+  BAPTIZE_CONFIG="$ROOT/test/fixtures/.holywater"
   source "$ROOT/lib/baptize.sh"
   [ "$BAPTIZE_LOADED" == "yes" ]
 }
