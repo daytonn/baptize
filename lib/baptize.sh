@@ -11,3 +11,7 @@ LIB="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$LIB/colors.sh"
 source "$LIB/prompt.sh"
 source "$LIB/git_prompt.sh"
+
+function repent {
+  source "$LIB/baptize.sh"
+}
