@@ -1,31 +1,46 @@
+GPULL_ICON="$GPULL_ICON"
+if [ -z "$GPULL_ICON" ]; then
+  GPULL_ICON="\[ ⇣ \]"
+fi
+
+GPUSH_ICON="$GPUSH_ICON"
+if [ -z "$GPUSH_ICON" ]; then
+  GPUSH_ICON="\[ ⇡ \]"
+fi
+
+GCLEAN_ICON="$GCLEAN_ICON"
+if [ -z "$GCLEAN_ICON" ]; then
+  GCLEAN_ICON="\[ ✓ \]"
+fi
+
 GDIRTY_COLOR="$GDIRTY_COLOR"
 if [ -z "$GDIRTY_COLOR" ]; then
-  GDIRTY_COLOR="bluef_yellowb"
+  GDIRTY_COLOR="$BLUEF_YELLOWB"
 fi
 
 GCLEAN_COLOR="$GCLEAN_COLOR"
 if [ -z "$GCLEAN_COLOR" ]; then
-  GCLEAN_COLOR="bluef_greenb"
+  GCLEAN_COLOR="$BLUEF_GREENB"
 fi
 
 GMODIFIED_COLOR="$GMODIFIED_COLOR"
 if [ -z "$GMODIFIED_COLOR" ]; then
-  GMODIFIED_COLOR="bluef_yellowb"
+  GMODIFIED_COLOR="$BLUEF_YELLOWB"
 fi
 
 GADDED_COLOR="$GADDED_COLOR"
 if [ -z "$GADDED_COLOR" ]; then
-  GADDED_COLOR="greenf_yellowb"
+  GADDED_COLOR="$GREENF_YELLOWB"
 fi
 
 GDELETED_COLOR="$GDELETED_COLOR"
 if [ -z "$GDELETED_COLOR" ]; then
-  GDELETED_COLOR="redf_yellowb"
+  GDELETED_COLOR="$REDF_YELLOWB"
 fi
 
 GSTATS_SEPERATOR_COLOR="$GSTATS_SEPERATOR_COLOR"
 if [ -z "$GSTATS_SEPERATOR_COLOR" ]; then
-  GSTATS_SEPERATOR_COLOR="bluef_yellowb"
+  GSTATS_SEPERATOR_COLOR="$BLUEF_YELLOWB"
 fi
 
 DEV_PATH="$DEV_PATH"
@@ -34,18 +49,7 @@ if [ -z "$DEV_PATH" ]; then
 fi
 
 function is_git_repository {
-  local is_git
-  if [  -d .git ]; then
-    is_git="yes"
-  else
-    if [ ! $(git rev-parse --git-dir) ]; then
-      is_git="no"
-    else
-      is_git="yes"
-    fi
-  fi
-
-  printf "$is_git"
+  git branch > /dev/null 2>&1
 }
 
 function wd_without_dev_path {
@@ -55,47 +59,66 @@ function wd_without_dev_path {
   else
     wd="${PWD/${HOME}\//}"
   fi
-  printf "$wd"
+  printf " $wd "
 }
 
 function git_stats_count {
   local status="$1"
   local status_prompt
-  if [ -n "$status" ]; then
-    local modified=`echo "$status" | egrep -o "^\s?M" | wc -l | tr -d ' '`
-    local added=`echo "$status" | egrep -o "^\s?\?\?" | wc -l | tr -d ' '`
-    local deleted=`echo "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
-    local seperator=$(eval $GSTATS_SEPERATOR_COLOR ':')
-    status_prompt+=$(eval $GMODIFIED_COLOR '$modified')
-    status_prompt+="${seperator}"
-    status_prompt+=$(eval $GADDED_COLOR '$added')
-    status_prompt+="${seperator}"
-    status_prompt+=$(eval $GDELETED_COLOR '$deleted')
-  fi
+  local modified=`echo -e "$status" | egrep -o "^\s?M" | wc -l | tr -d ' '`
+  local added=`echo -e "$status" | egrep -o "^\?\?" | wc -l | tr -d ' '`
+  local deleted=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
+  local separator="${GSTATS_SEPERATOR_COLOR}:"
+  status_prompt+="$GMODIFIED_COLOR $modified"
+  status_prompt+="$separator"
+  status_prompt+="$GADDED_COLOR$added"
+  status_prompt+="$separator"
+  status_prompt+="$GDELETED_COLOR$deleted$CEND"
   printf "$status_prompt"
 }
 
-# function ngit_status {
-#   local status="$1"
-#   local status_prompt
-#   local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-#   local behind
-#   if [[ "$status" == *"Your branch is behind"* ]]; then
-#     behind+=$(eval $GMODIFIED_COLOR " ⇣ ")
-#   fi
-#   if [[ "$status" == *"working directory clean"* ]]; then
-#     status_prompt+="$(eval $GCLEAN_COLOR " ✓ ")$behind"
-#   else
-#     status_prompt+="$(eval $git_modified_color " ⇡ ")$behind"
-#   fi
-#   printf "$status_prompt$branch "
-# }
+function git_status_icon {
+  local status="$1"
+  local icon
+  local behind
 
-# function ngit_prompt {
-#   local status=`git status -s`
-#   if [ $(is_git_repository) == "yes" ]; then
-#     PS1="\[${icon}\]\[$(git_stats_count '$status')\]\[$(git_status '$status')\]\[${prompt_color}\] \[$(wd_without_dev_path)\] \[❯\]  "
-#   else
-#     PS1="${prompt}"
-#   fi
-# }
+  if [[ "$status" == *"Your branch is behind"* ]]; then
+    behind+="$GMODIFIED_COLOR$GPULL_ICON$CEND"
+  fi
+
+  if [[ "$status" == *"working directory clean"* ]]; then
+    icon+="$GCLEAN_COLOR$GCLEAN_ICON$behind"
+  else
+    icon+="$GMODIFIED_COLOR$GPUSH_ICON$behind"
+  fi
+
+  printf "$icon"
+}
+
+function git_status_color {
+  local status="$1"
+
+  if [[ "$status" == *"working directory clean"* ]]; then
+    printf "$GCLEAN_COLOR"
+  else
+    printf "$GMODIFIED_COLOR"
+  fi
+}
+
+function git_prompt {
+  if is_git_repository ; then
+    local status=`git status -s`
+    local full_status=`git status`
+    local branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null) "
+    local stats_count=`git_stats_count "$status"`
+    local status_icon=`git_status_icon "$full_status"`
+    local status_color=`git_status_color "$full_status"`
+    local wd=`wd_without_dev_path`
+
+    PS1="$PROMPT_ICON$stats_count$status_icon$status_color$branch$CEND$PROMPT_COLOR$wd$PROMPT_ARROW$CEND "
+  else
+    PS1="$PROMPT"
+  fi
+}
+
+export PROMPT_COMMAND="git_prompt"

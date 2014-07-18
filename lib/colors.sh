@@ -1,95 +1,85 @@
-CEND="$(tput sgr0)"
-BOLD="$(tput bold)"
-BLACK="$(tput setaf 0)"
-WHITE="$(tput setaf 7)"
-RED="$(tput setaf 1)"
-GREEN="$(tput setaf 2)"
-YELLOW="$(tput setaf 3)"
-BLUE="$(tput setaf 4)"
-MAGENTA="$(tput setaf 5)"
-CYAN="$(tput setaf 6)"
+CEND="\[\033[0m\]"
+BLACK="\[\033[0;30m\]"
+WHITE="\[\033[37m\]"
+RED="\[\033[0;31m\]"
+GREEN="\[\033[0;32m\]"
+YELLOW="\[\033[0;33m\]"
+BLUE="\[\033[0;34m\]"
+MAGENTA="\[\033[0;35m\]"
+CYAN="\[\033[0;36m\]"
 
-BLACKB="$BOLD$BLACK"
-WHITEB="$BOLD$WHITE"
-REDB="$BOLD$RED"
-GREENB="$BOLD$GREEN"
-YELLOWB="$BOLD$YELLOW"
-BLUEB="$BOLD$BLUE"
-MAGENTAB="$BOLD$MAGENTA"
-CYANB="$BOLD$CYAN"
+BLACKB="\[\033[1;30m\]"
+WHITEB="\[\033[1;1m\]"
+REDB="\[\033[1;31m\]"
+GREENB="\[\033[1;32m\]"
+YELLOWB="\[\033[1;33m\]"
+BLUEB="\[\033[1;34m\]"
+MAGENTAB="\[\033[1;35m\]"
+CYANB="\[\033[1;36m\]"
 
-BG_BLACK="$(tput setab 0)"
-BG_RED="$(tput setab 1)"
-BG_GREEN="$(tput setab 2)"
-BG_YELLOW="$(tput setab 3)"
-BG_BLUE="$(tput setab 4)"
-BG_MAGENTA="$(tput setab 5)"
-BG_CYAN="$(tput setab 6)"
+WHITEF_BLACKB="\[\033[40;37m\]"
+WHITEF_REDB="\[\033[41;37m\]"
+WHITEF_GREENB="\[\033[42;37m\]"
+WHITEF_YELLOWB="\[\033[43;37m\]"
+WHITEF_BLUEB="\[\033[44;37m\]"
+WHITEF_MAGENTAB="\[\033[45;37m\]"
+WHITEF_CYANB="\[\033[46;37m\]"
 
-WHITE_BLACK="$WHITE$BG_BLACK"
-WHITE_RED="$WHITE$BG_RED"
-WHITE_GREEN="$WHITE$BG_GREEN"
-WHITE_YELLOW="$WHITE$BG_YELLOW"
-WHITE_BLUE="$WHITE$BG_BLUE"
-WHITE_MAGENTA="$WHITE$BG_MAGENTA"
-WHITE_CYAN="$WHITE$BG_CYAN"
+BLACKF_BLACKB="\[\033[40;30m\]"
+BLACKF_REDB="\[\033[41;30m\]"
+BLACKF_GREENB="\[\033[42;30m\]"
+BLACKF_YELLOWB="\[\033[43;30m\]"
+BLACKF_BLUEB="\[\033[44;30m\]"
+BLACKF_MAGENTAB="\[\033[45;30m\]"
+BLACKF_CYANB="\[\033[46;30m\]"
 
-BLACK_BLACK="$BLACK$BG_BLACK"
-BLACK_RED="$BLACK$BG_RED"
-BLACK_GREEN="$BLACK$BG_GREEN"
-BLACK_YELLOW="$BLACK$BG_YELLOW"
-BLACK_BLUE="$BLACK$BG_BLUE"
-BLACK_MAGENTA="$BLACK$BG_MAGENTA"
-BLACK_CYAN="$BLACK$BG_CYAN"
+REDF_BLACKB="\[\033[40;31m\]"
+REDF_REDB="\[\033[41;31m\]"
+REDF_GREENB="\[\033[42;31m\]"
+REDF_YELLOWB="\[\033[43;31m\]"
+REDF_BLUEB="\[\033[44;31m\]"
+REDF_MAGENTAB="\[\033[45;31m\]"
+REDF_CYANB="\[\033[46;31m\]"
 
-RED_BLACK="$RED$BG_BLACK"
-RED_RED="$RED$BG_RED"
-RED_GREEN="$RED$BG_GREEN"
-RED_YELLOW="$RED$BG_YELLOW"
-RED_BLUE="$RED$BG_BLUE"
-RED_MAGENTA="$RED$BG_MAGENTA"
-RED_CYAN="$RED$BG_CYAN"
+GREENF_BLACKB="\[\033[40;32m\]"
+GREENF_REDB="\[\033[41;32m\]"
+GREENF_GREENB="\[\033[42;32m\]"
+GREENF_YELLOWB="\[\033[43;32m\]"
+GREENF_BLUEB="\[\033[44;32m\]"
+GREENF_MAGENTAB="\[\033[45;32m\]"
+GREENF_CYANB="\[\033[46;32m\]"
 
-GREEN_BLACK="$GREEN$BG_BLACK"
-GREEN_RED="$GREEN$BG_RED"
-GREEN_GREEN="$GREEN$BG_GREEN"
-GREEN_YELLOW="$GREEN$BG_YELLOW"
-GREEN_BLUE="$GREEN$BG_BLUE"
-GREEN_MAGENTA="$GREEN$BG_MAGENTA"
-GREEN_CYAN="$GREEN$BG_CYAN"
+YELLOWF_BLACKB="\[\033[40;33m\]"
+YELLOWF_REDB="\[\033[41;33m\]"
+YELLOWF_GREENB="\[\033[42;33m\]"
+YELLOWF_YELLOWB="\[\033[43;33m\]"
+YELLOWF_BLUEB="\[\033[44;33m\]"
+YELLOWF_MAGENTAB="\[\033[45;33m\]"
+YELLOWF_CYANB="\[\033[46;33m\]"
 
-YELLOW_BLACK="$YELLOW$BG_BLACK"
-YELLOW_RED="$YELLOW$BG_RED"
-YELLOW_GREEN="$YELLOW$BG_GREEN"
-YELLOW_YELLOW="$YELLOW$BG_YELLOW"
-YELLOW_BLUE="$YELLOW$BG_BLUE"
-YELLOW_MAGENTA="$YELLOW$BG_MAGENTA"
-YELLOW_CYAN="$YELLOW$BG_CYAN"
+BLUEF_BLACKB="\[\033[40;34m\]"
+BLUEF_REDB="\[\033[41;34m\]"
+BLUEF_GREENB="\[\033[42;34m\]"
+BLUEF_YELLOWB="\[\033[43;34m\]"
+BLUEF_BLUEB="\[\033[44;34m\]"
+BLUEF_MAGENTAB="\[\033[45;34m\]"
+BLUEF_CYANB="\[\033[46;34m\]"
 
-BLUE_BLACK="$BLUE$BG_BLACK"
-BLUE_RED="$BLUE$BG_RED"
-BLUE_GREEN="$BLUE$BG_GREEN"
-BLUE_YELLOW="$BLUE$BG_YELLOW"
-BLUE_BLUE="$BLUE$BG_BLUE"
-BLUE_MAGENTA="$BLUE$BG_MAGENTA"
-BLUE_CYAN="$BLUE$BG_CYAN"
+MAGENTAF_BLACKB="\[\033[40;35m\]"
+MAGENTAF_REDB="\[\033[41;35m\]"
+MAGENTAF_GREENB="\[\033[42;35m\]"
+MAGENTAF_YELLOWB="\[\033[43;35m\]"
+MAGENTAF_BLUEB="\[\033[44;35m\]"
+MAGENTAF_MAGENTAB="\[\033[45;35m\]"
+MAGENTAF_CYANB="\[\033[46;35m\]"
 
-MAGENTA_BLACK="$MAGENTA$BG_BLACK"
-MAGENTA_RED="$MAGENTA$BG_RED"
-MAGENTA_GREEN="$MAGENTA$BG_GREEN"
-MAGENTA_YELLOW="$MAGENTA$BG_YELLOW"
-MAGENTA_BLUE="$MAGENTA$BG_BLUE"
-MAGENTA_MAGENTA="$MAGENTA$BG_MAGENTA"
-MAGENTA_CYAN="$MAGENTA$BG_CYAN"
-
-CYAN_BLACK="$CYAN$BG_BLACK"
-CYAN_RED="$CYAN$BG_RED"
-CYAN_GREEN="$CYAN$BG_GREEN"
-CYAN_YELLOW="$CYAN$BG_YELLOW"
-CYAN_BLUE="$CYAN$BG_BLUE"
-CYAN_MAGENTA="$CYAN$BG_MAGENTA"
-CYAN_CYAN="$CYAN$BG_CYAN"
-
+CYANF_BLACKB="\[\033[40;36m\]"
+CYANF_REDB="\[\033[41;36m\]"
+CYANF_GREENB="\[\033[42;36m\]"
+CYANF_YELLOWB="\[\033[43;36m\]"
+CYANF_BLUEB="\[\033[44;36m\]"
+CYANF_MAGENTAB="\[\033[45;36m\]"
+CYANF_CYANB="\[\033[46;36m\]"
 
 function black {
   printf "${BLACK}${1}${CEND}"
@@ -132,7 +122,8 @@ function yellowb {
 }
 
 function blue {
-  printf "${BLUE}${1}${CEND}"
+  local text="${BLUE}${1}${CEND}"
+  printf "$text"
 }
 
 function blueb {
@@ -156,227 +147,227 @@ function cyanb {
 }
 
 function whitef_blackb {
-  printf "${WHITE_BLACK}${1}${CEND}"
+  printf "${WHITEF_BLACKB}${1}${CEND}"
 }
 
 function whitef_redb {
-  printf "${WHITE_RED}${1}${CEND}"
+  printf "${WHITEF_REDB}${1}${CEND}"
 }
 
 function whitef_greenb {
-  printf "${WHITE_GREEN}${1}${CEND}"
+  printf "${WHITEF_GREENB}${1}${CEND}"
 }
 
 function whitef_yellowb {
-  printf "${WHITE_YELLOW}${1}${CEND}"
+  printf "${WHITEF_YELLOWB}${1}${CEND}"
 }
 
 function whitef_blueb {
-  printf "${WHITE_BLUE}${1}${CEND}"
+  printf "${WHITEF_BLUEB}${1}${CEND}"
 }
 
 function whitef_magentab {
-  printf "${WHITE_MAGENTA}${1}${CEND}"
+  printf "${WHITEF_MAGENTAB}${1}${CEND}"
 }
 
 function whitef_lightblueb {
-  printf "${WHITE_CYAN}${1}${CEND}"
+  printf "${WHITEF_CYANB}${1}${CEND}"
 }
 
 function blackf_blackb {
-  printf "${BLACK_BLACK}${1}${CEND}"
+  printf "${BLACKF_BLACKB}${1}${CEND}"
 }
 
 function blackf_redb {
-  printf "${BLACK_RED}${1}${CEND}"
+  printf "${BLACKF_REDB}${1}${CEND}"
 }
 
 function blackf_greenb {
-  printf "${BLACK_GREEN}${1}${CEND}"
+  printf "${BLACKF_GREENB}${1}${CEND}"
 }
 
 function blackf_yellowb {
-  printf "${BLACK_YELLOW}${1}${CEND}"
+  printf "${BLACKF_YELLOWB}${1}${CEND}"
 }
 
 function blackf_blueb {
-  printf "${BLACK_BLUE}${1}${CEND}"
+  printf "${BLACKF_BLUEB}${1}${CEND}"
 }
 
 function blackf_magentab {
-  printf "${BLACK_MAGENTA}${1}${CEND}"
+  printf "${BLACKF_MAGENTAB}${1}${CEND}"
 }
 
 function blackf_lightblueb {
-  printf "${BLACK_CYAN}${1}${CEND}"
+  printf "${BLACKF_CYANB}${1}${CEND}"
 }
 
 function redf_blackb {
-  printf "${RED_BLACK}${1}${CEND}"
+  printf "${REDF_BLACKB}${1}${CEND}"
 }
 
 function redf_redb {
-  printf "${RED_RED}${1}${CEND}"
+  printf "${REDF_REDB}${1}${CEND}"
 }
 
 function redf_greenb {
-  printf "${RED_GREEN}${1}${CEND}"
+  printf "${REDF_GREENB}${1}${CEND}"
 }
 
 function redf_yellowb {
-  printf "${RED_YELLOW}${1}${CEND}"
+  printf "${REDF_YELLOWB}${1}${CEND}"
 }
 
 function redf_blueb {
-  printf "${RED_BLUE}${1}${CEND}"
+  printf "${REDF_BLUEB}${1}${CEND}"
 }
 
 function redf_magentab {
-  printf "${RED_MAGENTA}${1}${CEND}"
+  printf "${REDF_MAGENTAB}${1}${CEND}"
 }
 
 function redf_lightblueb {
-  printf "${RED_CYAN}${1}${CEND}"
+  printf "${REDF_CYANB}${1}${CEND}"
 }
 
 function greenf_blackb {
-  printf "${GREEN_BLACK}${1}${CEND}"
+  printf "${GREENF_BLACKB}${1}${CEND}"
 }
 
 function greenf_redb {
-  printf "${GREEN_RED}${1}${CEND}"
+  printf "${GREENF_REDB}${1}${CEND}"
 }
 
 function greenf_greenb {
-  printf "${GREEN_GREEN}${1}${CEND}"
+  printf "${GREENF_GREENB}${1}${CEND}"
 }
 
 function greenf_yellowb {
-  printf "${GREEN_YELLOW}${1}${CEND}"
+  printf "${GREENF_YELLOWB}${1}${CEND}"
 }
 
 function greenf_blueb {
-  printf "${GREEN_BLUE}${1}${CEND}"
+  printf "${GREENF_BLUEB}${1}${CEND}"
 }
 
 function greenf_magentab {
-  printf "${GREEN_MAGENTA}${1}${CEND}"
+  printf "${GREENF_MAGENTAB}${1}${CEND}"
 }
 
 function greenf_lightblueb {
-  printf "${GREEN_CYAN}${1}${CEND}"
+  printf "${GREENF_CYANB}${1}${CEND}"
 }
 
 function yellowf_blackb {
-  printf "${YELLOW_BLACK}${1}${CEND}"
+  printf "${YELLOWF_BLACKB}${1}${CEND}"
 }
 
 function yellowf_redb {
-  printf "${YELLOW_RED}${1}${CEND}"
+  printf "${YELLOWF_REDB}${1}${CEND}"
 }
 
 function yellowf_greenb {
-  printf "${YELLOW_GREEN}${1}${CEND}"
+  printf "${YELLOWF_GREENB}${1}${CEND}"
 }
 
 function yellowf_yellowb {
-  printf "${YELLOW_YELLOW}${1}${CEND}"
+  printf "${YELLOWF_YELLOWB}${1}${CEND}"
 }
 
 function yellowf_blueb {
-  printf "${YELLOW_BLUE}${1}${CEND}"
+  printf "${YELLOWF_BLUEB}${1}${CEND}"
 }
 
 function yellowf_magentab {
-  printf "${YELLOW_MAGENTA}${1}${CEND}"
+  printf "${YELLOWF_MAGENTAB}${1}${CEND}"
 }
 
 function yellowf_lightblueb {
-  printf "${YELLOW_CYAN}${1}${CEND}"
+  printf "${YELLOWF_CYANB}${1}${CEND}"
 }
 
 function bluef_blackb {
-  printf "${BLUE_BLACK}${1}${CEND}"
+  printf "${BLUEF_BLACKB}${1}${CEND}"
 }
 
 function bluef_redb {
-  printf "${BLUE_RED}${1}${CEND}"
+  printf "${BLUEF_REDB}${1}${CEND}"
 }
 
 function bluef_greenb {
-  printf "${BLUE_GREEN}${1}${CEND}"
+  printf "${BLUEF_GREENB}${1}${CEND}"
 }
 
 function bluef_yellowb {
-  printf "${BLUE_YELLOW}${1}${CEND}"
+  printf "${BLUEF_YELLOWB}${1}${CEND}"
 }
 
 function bluef_blueb {
-  printf "${BLUE_BLUE}${1}${CEND}"
+  printf "${BLUEF_BLUEB}${1}${CEND}"
 }
 
 function bluef_magentab {
-  printf "${BLUE_MAGENTA}${1}${CEND}"
+  printf "${BLUEF_MAGENTAB}${1}${CEND}"
 }
 
 function bluef_lightblueb {
-  printf "${BLUE_CYAN}${1}${CEND}"
+  printf "${BLUEF_CYANB}${1}${CEND}"
 }
 
 function magentaf_blackb {
-  printf "${MAGENTA_BLACK}${1}${CEND}"
+  printf "${MAGENTAF_BLACKB}${1}${CEND}"
 }
 
 function magentaf_redb {
-  printf "${MAGENTA_RED}${1}${CEND}"
+  printf "${MAGENTAF_REDB}${1}${CEND}"
 }
 
 function magentaf_greenb {
-  printf "${MAGENTA_GREEN}${1}${CEND}"
+  printf "${MAGENTAF_GREENB}${1}${CEND}"
 }
 
 function magentaf_yellowb {
-  printf "${MAGENTA_YELLOW}${1}${CEND}"
+  printf "${MAGENTAF_YELLOWB}${1}${CEND}"
 }
 
 function magentaf_blueb {
-  printf "${MAGENTA_BLUE}${1}${CEND}"
+  printf "${MAGENTAF_BLUEB}${1}${CEND}"
 }
 
 function magentaf_magentab {
-  printf "${MAGENTA_MAGENTA}${1}${CEND}"
+  printf "${MAGENTAF_MAGENTAB}${1}${CEND}"
 }
 
 function magentaf_lightblueb {
-  printf "${MAGENTA_CYAN}${1}${CEND}"
+  printf "${MAGENTAF_CYANB}${1}${CEND}"
 }
 
 function cyanf_blackb {
-  printf "${CYAN_BLACK}${1}${CEND}"
+  printf "${CYANF_BLACKB}${1}${CEND}"
 }
 
 function cyanf_redb {
-  printf "${CYAN_RED}${1}${CEND}"
+  printf "${CYANF_REDB}${1}${CEND}"
 }
 
 function cyanf_greenb {
-  printf "${CYAN_GREEN}${1}${CEND}"
+  printf "${CYANF_GREENB}${1}${CEND}"
 }
 
 function cyanf_yellowb {
-  printf "${CYAN_YELLOW}${1}${CEND}"
+  printf "${CYANF_YELLOWB}${1}${CEND}"
 }
 
 function cyanf_blueb {
-  printf "${CYAN_BLUE}${1}${CEND}"
+  printf "${CYANF_BLUEB}${1}${CEND}"
 }
 
 function cyanf_magentab {
-  printf "${CYAN_MAGENTA}${1}${CEND}"
+  printf "${CYANF_MAGENTAB}${1}${CEND}"
 }
 
 function cyanf_lightblueb {
-  printf "${CYAN_CYAN}${1}${CEND}"
+  printf "${CYANF_CYANB}${1}${CEND}"
 }
 
 function colors {
