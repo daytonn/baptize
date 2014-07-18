@@ -12,6 +12,23 @@ source "$LIB/colors.sh"
 source "$LIB/prompt.sh"
 source "$LIB/git_prompt.sh"
 
-function repent {
-  source "$LIB/baptize.sh"
+function baptize {
+  local cmd="$1"
+  if [ -z "$cmd" ]; then
+    echo "usage: baptize <command>"
+    echo ""
+    echo "commands:"
+    echo "  reload, repent    reload baptize config"
+    echo "  update, redeem    update baptize to the latest version"
+  else
+    if [ "$cmd" == "update" ] || [ "$cmd" == "redeem" ]; then
+      cd "$LIB/.."
+      git pull
+      source "$LIB/baptize.sh"
+      cd - > /dev/null 2>&1
+    fi
+
+    if [ "$cmd" == "reload" ] || [ "$cmd" == "repent" ]; then
+    fi
+  fi
 }
