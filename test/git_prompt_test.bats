@@ -127,6 +127,12 @@ load test_helper
   [ "$output" = `printf "$expected_prompt"` ]
 }
 
+@test "git_stats_count returns an empty string when clean" {
+  run git_stats_count ""
+  [ "$status" -eq 0 ]
+  [ "$output" = "" ]
+}
+
 @test "git_status_icon returns the clean icon when the repo is clean" {
   run git_status_icon "working directory clean"
   [ "$status" -eq 0 ]
