@@ -29,6 +29,7 @@ function baptize {
     fi
 
     if [ "$cmd" == "reload" ] || [ "$cmd" == "repent" ]; then
+      source "$LIB/baptize.sh"
     fi
   fi
 }
