@@ -23,7 +23,7 @@ function baptize {
   else
     if [ "$cmd" == "update" ] || [ "$cmd" == "redeem" ]; then
       cd "$LIB/.."
-      git pull
+      git pull origin matser
       source "$LIB/baptize.sh"
       cd - > /dev/null 2>&1
     fi
