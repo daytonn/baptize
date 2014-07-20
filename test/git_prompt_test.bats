@@ -7,9 +7,9 @@ load test_helper
 }
 
 @test "it defers if a dirty color variable is already set" {
-  GDIRTY_COLOR="test"
+  GDIRTY_COLOR=""
   source "$ROOT/lib/git_prompt.sh"
-  [ "$GDIRTY_COLOR" == "test" ]
+  [ "$GDIRTY_COLOR" == "" ]
 }
 
 @test "it has a clean color variable" {
@@ -17,9 +17,9 @@ load test_helper
 }
 
 @test "it defers if a clean color variable is already set" {
-  GCLEAN_COLOR="test"
+  GCLEAN_COLOR=""
   source "$ROOT/lib/git_prompt.sh"
-  [ "$GCLEAN_COLOR" == "test" ]
+  [ "$GCLEAN_COLOR" == "" ]
 }
 
 @test "it has a modified color variable" {
@@ -27,9 +27,9 @@ load test_helper
 }
 
 @test "it defers a modified color variable is already set" {
-  GMODIFIED_COLOR="test"
+  GMODIFIED_COLOR=""
   source "$ROOT/lib/git_prompt.sh"
-  [ "$GMODIFIED_COLOR" == "test" ]
+  [ "$GMODIFIED_COLOR" == "" ]
 }
 
 @test "it has an added color variable" {
@@ -37,9 +37,9 @@ load test_helper
 }
 
 @test "it defers if an added color variable is already set" {
-  GADDED_COLOR="test"
+  GADDED_COLOR=""
   source "$ROOT/lib/git_prompt.sh"
-  [ "$GADDED_COLOR" == "test" ]
+  [ "$GADDED_COLOR" == "" ]
 }
 
 @test "it has a deleted color variable" {
@@ -47,9 +47,9 @@ load test_helper
 }
 
 @test "it defers if a deleted color variable is already set" {
-  GDELETED_COLOR="test"
+  GDELETED_COLOR=""
   source "$ROOT/lib/git_prompt.sh"
-  [ "$GDELETED_COLOR" == "test" ]
+  [ "$GDELETED_COLOR" == "" ]
 }
 
 @test "it has a stats separator color variable" {
@@ -57,9 +57,9 @@ load test_helper
 }
 
 @test "it defers if a stats separator color variable is already set" {
-  GSTATS_SEPERATOR_COLOR="test"
+  GSTATS_SEPERATOR_COLOR=""
   source "$ROOT/lib/git_prompt.sh"
-  [ "$GSTATS_SEPERATOR_COLOR" == "test" ]
+  [ "$GSTATS_SEPERATOR_COLOR" == "" ]
 }
 
 @test "it has a pull icon" {
@@ -67,9 +67,9 @@ load test_helper
 }
 
 @test "it defers if a pull icon is already set" {
-  GPULL_ICON="test"
+  GPULL_ICON=""
   source "$ROOT/lib/git_prompt.sh"
-  [ "$GPULL_ICON" == "test" ]
+  [ "$GPULL_ICON" == "" ]
 }
 
 @test "it has a push icon" {
@@ -77,9 +77,9 @@ load test_helper
 }
 
 @test "it defers if a push icon is already set" {
-  GPUSH_ICON="test"
+  GPUSH_ICON=""
   source "$ROOT/lib/git_prompt.sh"
-  [ "$GPUSH_ICON" == "test" ]
+  [ "$GPUSH_ICON" == "" ]
 }
 
 @test "it has a clean icon" {
@@ -87,9 +87,9 @@ load test_helper
 }
 
 @test "it defers if a clean icon is already set" {
-  GCLEAN_ICON="test"
+  GCLEAN_ICON=""
   source "$ROOT/lib/git_prompt.sh"
-  [ "$GCLEAN_ICON" == "test" ]
+  [ "$GCLEAN_ICON" == "" ]
 }
 
 @test "is_git_repository determines if currently in a git repo" {

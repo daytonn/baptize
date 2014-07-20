@@ -1,5 +1,6 @@
-ROOT="$HOME/Development/baptize"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/.."
 
-source "$HOME/Development/baptize/lib/colors.sh"
-source "$HOME/Development/baptize/lib/git_prompt.sh"
-source "$HOME/Development/baptize/lib/baptize.sh"
+source "$ROOT/lib/baptize.sh"
+source "$ROOT/lib/colors.sh"
+source "$ROOT/lib/prompt.sh"
+source "$ROOT/lib/git_prompt.sh"

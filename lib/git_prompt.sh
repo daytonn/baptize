@@ -1,45 +1,36 @@
-GPULL_ICON="$GPULL_ICON"
-if [ -z "$GPULL_ICON" ]; then
+if [[ -z ${GPULL_ICON+x} ]]; then
   GPULL_ICON="\[ ⇣ \]"
 fi
 
-GPUSH_ICON="$GPUSH_ICON"
-if [ -z "$GPUSH_ICON" ]; then
+if [[ -z ${GPUSH_ICON+x} ]]; then
   GPUSH_ICON="\[ ⇡ \]"
 fi
 
-GCLEAN_ICON="$GCLEAN_ICON"
-if [ -z "$GCLEAN_ICON" ]; then
+if [[ -z ${GCLEAN_ICON+x} ]]; then
   GCLEAN_ICON="\[ ✓ \]"
 fi
 
-GDIRTY_COLOR="$GDIRTY_COLOR"
-if [ -z "$GDIRTY_COLOR" ]; then
+if [[ -z ${GDIRTY_COLOR+x} ]]; then
   GDIRTY_COLOR="$BLUEF_YELLOWB"
 fi
 
-GCLEAN_COLOR="$GCLEAN_COLOR"
-if [ -z "$GCLEAN_COLOR" ]; then
+if [[ -z ${GCLEAN_COLOR+x} ]]; then
   GCLEAN_COLOR="$BLUEF_GREENB"
 fi
 
-GMODIFIED_COLOR="$GMODIFIED_COLOR"
-if [ -z "$GMODIFIED_COLOR" ]; then
+if [[ -z ${GMODIFIED_COLOR+x} ]]; then
   GMODIFIED_COLOR="$BLUEF_YELLOWB"
 fi
 
-GADDED_COLOR="$GADDED_COLOR"
-if [ -z "$GADDED_COLOR" ]; then
+if [[ -z ${GADDED_COLOR+x} ]]; then
   GADDED_COLOR="$GREENF_YELLOWB"
 fi
 
-GDELETED_COLOR="$GDELETED_COLOR"
-if [ -z "$GDELETED_COLOR" ]; then
+if [[ -z ${GDELETED_COLOR+x} ]]; then
   GDELETED_COLOR="$REDF_YELLOWB"
 fi
 
-GSTATS_SEPERATOR_COLOR="$GSTATS_SEPERATOR_COLOR"
-if [ -z "$GSTATS_SEPERATOR_COLOR" ]; then
+if [[ -z ${GSTATS_SEPERATOR_COLOR+x} ]]; then
   GSTATS_SEPERATOR_COLOR="$BLUEF_YELLOWB"
 fi
 
