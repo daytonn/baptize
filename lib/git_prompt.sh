@@ -68,7 +68,7 @@ function git_stats_count {
     status_prompt+="$separator"
     status_prompt+="\[$GADDED_COLOR\]$added"
     status_prompt+="$separator"
-    status_prompt+="\[$GDELETED_COLOR\]$deleted$CEND"
+    status_prompt+="\[$GDELETED_COLOR\]$deleted\[$CEND\]"
   fi
   printf "$status_prompt"
 }

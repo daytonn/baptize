@@ -23,19 +23,19 @@ load test_helper
 }
 
 @test "it sets a star icon" {
-  [ "$STAR_ICON" == "\[☆ \]" ]
+  [ "$STAR_ICON" == "☆ " ]
 }
 
 @test "it sets an apple icon" {
-  [ "$APPLE_ICON" == "\[  \]" ]
+  [ "$APPLE_ICON" == "  " ]
 }
 
 @test "it sets a heart icon" {
-  [ "$HEART_ICON" == "\[❤︎ \]" ]
+  [ "$HEART_ICON" == "❤︎ " ]
 }
 
 @test "it sets a prompt arrow" {
-  [ "$PROMPT_ARROW" == "\[❯ \]" ]
+  [ "$PROMPT_ARROW" == "❯ " ]
 }
 
 @test "it defers if a prompt arrow variable is already set" {
@@ -65,7 +65,7 @@ load test_helper
 }
 
 @test "it sets a prompt variable" {
-  [ "$PROMPT" == "$PROMPT_ICON_COLOR$PROMPT_ICON$PROMPT_COLOR$PROMPT_CONTENT$PROMPT_ARROW$CEND " ]
+  [ "$PROMPT" == "\[${PROMPT_ICON_COLOR}\]\[${PROMPT_ICON}\]\[${PROMPT_COLOR}\]${PROMPT_CONTENT}\[${PROMPT_ARROW}\]\[${CEND}\] " ]
 }
 
 @test "it defers if a prompt variable is already set" {
@@ -89,7 +89,7 @@ load test_helper
 }
 
 @test "it has a prompt 2 arrow variable" {
-  [ "$PROMPT_2_ARROW" == "\[❯❯ \]" ]
+  [ "$PROMPT_2_ARROW" == "❯❯ " ]
 }
 
 @test "it defers if a prompt 2 color variable is already set" {
@@ -99,7 +99,7 @@ load test_helper
 }
 
 @test "it sets a prompt 2 variable" {
-  [ "$PROMPT_2" == "$PROMPT_2_COLOR$PROMPT_2_ARROW$CEND" ]
+  [ "$PROMPT_2" == "\[${PROMPT_2_COLOR}\]\[${PROMPT_2_ARROW}\]\[${CEND}\] " ]
 }
 
 @test "it defers if a prompt 2 variable is already set" {

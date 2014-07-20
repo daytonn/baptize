@@ -63,7 +63,7 @@ load test_helper
 }
 
 @test "it has a pull icon" {
-  [ "$GPULL_ICON" == "\[ ⇣ \]" ]
+  [ "$GPULL_ICON" == " ⇣ " ]
 }
 
 @test "it defers if a pull icon is already set" {
@@ -73,7 +73,7 @@ load test_helper
 }
 
 @test "it has a push icon" {
-  [ "$GPUSH_ICON" == "\[ ⇡ \]" ]
+  [ "$GPUSH_ICON" == " ⇡ " ]
 }
 
 @test "it defers if a push icon is already set" {
@@ -83,7 +83,7 @@ load test_helper
 }
 
 @test "it has a clean icon" {
-  [ "$GCLEAN_ICON" == "\[ ✓ \]" ]
+  [ "$GCLEAN_ICON" == " ✓ " ]
 }
 
 @test "it defers if a clean icon is already set" {
@@ -99,12 +99,12 @@ load test_helper
 
 @test "git_stats_count returns a modified count in a formatted status block" {
   local expected_prompt
-  local separator="${GSTATS_SEPERATOR_COLOR}:"
-  expected_prompt+="${GMODIFIED_COLOR} 1"
+  local separator="\[${GSTATS_SEPERATOR_COLOR}\]:"
+  expected_prompt+="\[$GMODIFIED_COLOR\] 1"
   expected_prompt+="$separator"
-  expected_prompt+="${GADDED_COLOR}1"
+  expected_prompt+="\[$GADDED_COLOR\]1"
   expected_prompt+="$separator"
-  expected_prompt+="${GDELETED_COLOR}1${CEND}"
+  expected_prompt+="\[$GDELETED_COLOR\]1\[$CEND\]"
 
   run git_stats_count " M something\n D something\n?? something"
   [ "$status" -eq 0 ]
