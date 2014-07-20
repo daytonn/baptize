@@ -33,7 +33,11 @@ Create a configuration file with the `config` command:
 baptize config init
 ```
 
-This will create a `~/.holywater` file with all the customizeable variables with their default values.
+This will create a `~/.holywater` file with all the customizeable variables with their default values. To reload baptize with this configuration type:
+
+```sh
+baptize repent
+```
 
 Colors
 ------
