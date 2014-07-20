@@ -21,3 +21,25 @@ Then in your `.bashrc` or `.bash_profile` paste this:
 ```sh
 source ~/.baptize/lib/baptize.sh
 ```
+
+Configuration
+-------------
+
+Baptize comes preconfigured with some color settings but to customize the settings you'll need a `~/.holywater` configuration file.
+
+Create a configuration file with the `config` command:
+
+```sh
+baptize config init
+```
+
+This will create a `~/.holywater` file with all the customizeable variables with their default values.
+
+Colors
+------
+
+Baptize comes with a full suite of color variables necessary to create any color your terminal can produce. To view all the available color variables, and what they look like use the `colors` command:
+
+```sh
+baptize colors
+```

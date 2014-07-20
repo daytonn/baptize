@@ -100,5 +100,9 @@ function baptize {
     if [ "$cmd" == "config" ]; then
       __baptize_config "$2"
     fi
+
+    if [ "$cmd" == "colors" ]; then
+      __baptize_colors
+    fi
   fi
 }
