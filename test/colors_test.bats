@@ -3,295 +3,295 @@
 load test_helper
 
 @test "it has a reset escape sequence variable" {
-  [ "$CEND" == "\[\033[0m\]" ]
+  [ "$CEND" == "\033[0m" ]
 }
 
 @test "it has a black escape sequence variable" {
-  [ "$BLACK" == "\[\033[0;30m\]" ]
+  [ "$BLACK" == "\033[0;30m" ]
 }
 
 @test "it has a white escape sequence variable" {
-  [ "$WHITE" == "\[\033[37m\]" ]
+  [ "$WHITE" == "\033[37m" ]
 }
 
 @test "it has a red escape sequence variable" {
-  [ "$RED" == "\[\033[0;31m\]" ]
+  [ "$RED" == "\033[0;31m" ]
 }
 
 @test "it has a green escape sequence variable" {
-  [ "$GREEN" == "\[\033[0;32m\]" ]
+  [ "$GREEN" == "\033[0;32m" ]
 }
 
 @test "it has a yellow escape sequence variable" {
-  [ "$YELLOW" == "\[\033[0;33m\]" ]
+  [ "$YELLOW" == "\033[0;33m" ]
 }
 
 @test "it has a blue escape sequence variable" {
-  [ "$BLUE" == "\[\033[0;34m\]" ]
+  [ "$BLUE" == "\033[0;34m" ]
 }
 
 @test "it has a magenta escape sequence variable" {
-  [ "$MAGENTA" == "\[\033[0;35m\]" ]
+  [ "$MAGENTA" == "\033[0;35m" ]
 }
 
 @test "it has a cyan escape sequence variable" {
-  [ "$CYAN" == "\[\033[0;36m\]" ]
+  [ "$CYAN" == "\033[0;36m" ]
 }
 
 @test "it has a bold black escape sequence variable" {
-  [ "$BLACKB" == "\[\033[1;30m\]" ]
+  [ "$BLACKB" == "\033[1;30m" ]
 }
 
 @test "it has a bold white escape sequence variable" {
-  [ "$WHITEB" == "\[\033[1;1m\]" ]
+  [ "$WHITEB" == "\033[1;1m" ]
 }
 
 @test "it has a bold red escape sequence variable" {
-  [ "$REDB" == "\[\033[1;31m\]" ]
+  [ "$REDB" == "\033[1;31m" ]
 }
 
 @test "it has a bold green escape sequence variable" {
-  [ "$GREENB" == "\[\033[1;32m\]" ]
+  [ "$GREENB" == "\033[1;32m" ]
 }
 
 @test "it has a bold yellow escape sequence variable" {
-  [ "$YELLOWB" == "\[\033[1;33m\]" ]
+  [ "$YELLOWB" == "\033[1;33m" ]
 }
 
 @test "it has a bold blue escape sequence variable" {
-  [ "$BLUEB" == "\[\033[1;34m\]" ]
+  [ "$BLUEB" == "\033[1;34m" ]
 }
 
 @test "it has a bold magenta escape sequence variable" {
-  [ "$MAGENTAB" == "\[\033[1;35m\]" ]
+  [ "$MAGENTAB" == "\033[1;35m" ]
 }
 
 @test "it has a bold cyan escape sequence variable" {
-  [ "$CYANB" == "\[\033[1;36m\]" ]
+  [ "$CYANB" == "\033[1;36m" ]
 }
 
 @test "it has a white foreground, black background escape sequence variable" {
-  [ "$WHITEF_BLACKB" == "\[\033[40;37m\]" ]
+  [ "$WHITEF_BLACKB" == "\033[40;37m" ]
 }
 
 @test "it has a white foreground, red background escape sequence variable" {
-  [ "$WHITEF_REDB" == "\[\033[41;37m\]" ]
+  [ "$WHITEF_REDB" == "\033[41;37m" ]
 }
 
 @test "it has a white foreground, green background escape sequence variable" {
-  [ "$WHITEF_GREENB" == "\[\033[42;37m\]" ]
+  [ "$WHITEF_GREENB" == "\033[42;37m" ]
 }
 
 @test "it has a white foreground, yellow background escape sequence variable" {
-  [ "$WHITEF_YELLOWB" == "\[\033[43;37m\]" ]
+  [ "$WHITEF_YELLOWB" == "\033[43;37m" ]
 }
 
 @test "it has a white foreground, blue background escape sequence variable" {
-  [ "$WHITEF_BLUEB" == "\[\033[44;37m\]" ]
+  [ "$WHITEF_BLUEB" == "\033[44;37m" ]
 }
 
 @test "it has a white foreground, magenta background escape sequence variable" {
-  [ "$WHITEF_MAGENTAB" == "\[\033[45;37m\]" ]
+  [ "$WHITEF_MAGENTAB" == "\033[45;37m" ]
 }
 
 @test "it has a white foreground, cyan background escape sequence variable" {
-  [ "$WHITEF_CYANB" == "\[\033[46;37m\]" ]
+  [ "$WHITEF_CYANB" == "\033[46;37m" ]
 }
 
 @test "it has a black foreground, black background escape sequence variable" {
-  [ "$BLACKF_BLACKB" == "\[\033[40;30m\]" ]
+  [ "$BLACKF_BLACKB" == "\033[40;30m" ]
 }
 
 @test "it has a black foreground, red background escape sequence variable" {
-  [ "$BLACKF_REDB" == "\[\033[41;30m\]" ]
+  [ "$BLACKF_REDB" == "\033[41;30m" ]
 }
 
 @test "it has a black foreground, green background escape sequence variable" {
-  [ "$BLACKF_GREENB" == "\[\033[42;30m\]" ]
+  [ "$BLACKF_GREENB" == "\033[42;30m" ]
 }
 
 @test "it has a black foreground, yellow background escape sequence variable" {
-  [ "$BLACKF_YELLOWB" == "\[\033[43;30m\]" ]
+  [ "$BLACKF_YELLOWB" == "\033[43;30m" ]
 }
 
 @test "it has a black foreground, blue background escape sequence variable" {
-  [ "$BLACKF_BLUEB" == "\[\033[44;30m\]" ]
+  [ "$BLACKF_BLUEB" == "\033[44;30m" ]
 }
 
 @test "it has a black foreground, magenta background escape sequence variable" {
-  [ "$BLACKF_MAGENTAB" == "\[\033[45;30m\]" ]
+  [ "$BLACKF_MAGENTAB" == "\033[45;30m" ]
 }
 
 @test "it has a black foreground, cyan background escape sequence variable" {
-  [ "$BLACKF_CYANB" == "\[\033[46;30m\]" ]
+  [ "$BLACKF_CYANB" == "\033[46;30m" ]
 }
 
 @test "it has a red foreground, black background escape sequence variable" {
-  [ "$REDF_BLACKB" == "\[\033[40;31m\]" ]
+  [ "$REDF_BLACKB" == "\033[40;31m" ]
 }
 
 @test "it has a red foreground, red background escape sequence variable" {
-  [ "$REDF_REDB" == "\[\033[41;31m\]" ]
+  [ "$REDF_REDB" == "\033[41;31m" ]
 }
 
 @test "it has a red foreground, green background escape sequence variable" {
-  [ "$REDF_GREENB" == "\[\033[42;31m\]" ]
+  [ "$REDF_GREENB" == "\033[42;31m" ]
 }
 
 @test "it has a red foreground, yellow background escape sequence variable" {
-  [ "$REDF_YELLOWB" == "\[\033[43;31m\]" ]
+  [ "$REDF_YELLOWB" == "\033[43;31m" ]
 }
 
 @test "it has a red foreground, blue background escape sequence variable" {
-  [ "$REDF_BLUEB" == "\[\033[44;31m\]" ]
+  [ "$REDF_BLUEB" == "\033[44;31m" ]
 }
 
 @test "it has a red foreground, magenta background escape sequence variable" {
-  [ "$REDF_MAGENTAB" == "\[\033[45;31m\]" ]
+  [ "$REDF_MAGENTAB" == "\033[45;31m" ]
 }
 
 @test "it has a red foreground, cyan background escape sequence variable" {
-  [ "$REDF_CYANB" == "\[\033[46;31m\]" ]
+  [ "$REDF_CYANB" == "\033[46;31m" ]
 }
 
 @test "it has a green foreground, black background escape sequence variable" {
-  [ "$GREENF_BLACKB" == "\[\033[40;32m\]" ]
+  [ "$GREENF_BLACKB" == "\033[40;32m" ]
 }
 
 @test "it has a green foreground, red background escape sequence variable" {
-  [ "$GREENF_REDB" == "\[\033[41;32m\]" ]
+  [ "$GREENF_REDB" == "\033[41;32m" ]
 }
 
 @test "it has a green foreground, green background escape sequence variable" {
-  [ "$GREENF_GREENB" == "\[\033[42;32m\]" ]
+  [ "$GREENF_GREENB" == "\033[42;32m" ]
 }
 
 @test "it has a green foreground, yellow background escape sequence variable" {
-  [ "$GREENF_YELLOWB" == "\[\033[43;32m\]" ]
+  [ "$GREENF_YELLOWB" == "\033[43;32m" ]
 }
 
 @test "it has a green foreground, blue background escape sequence variable" {
-  [ "$GREENF_BLUEB" == "\[\033[44;32m\]" ]
+  [ "$GREENF_BLUEB" == "\033[44;32m" ]
 }
 
 @test "it has a green foreground, magenta background escape sequence variable" {
-  [ "$GREENF_MAGENTAB" == "\[\033[45;32m\]" ]
+  [ "$GREENF_MAGENTAB" == "\033[45;32m" ]
 }
 
 @test "it has a green foreground, cyan background escape sequence variable" {
-  [ "$GREENF_CYANB" == "\[\033[46;32m\]" ]
+  [ "$GREENF_CYANB" == "\033[46;32m" ]
 }
 
 @test "it has a yellow foreground, black background escape sequence variable" {
-  [ "$YELLOWF_BLACKB" == "\[\033[40;33m\]" ]
+  [ "$YELLOWF_BLACKB" == "\033[40;33m" ]
 }
 
 @test "it has a yellow foreground, red background escape sequence variable" {
-  [ "$YELLOWF_REDB" == "\[\033[41;33m\]" ]
+  [ "$YELLOWF_REDB" == "\033[41;33m" ]
 }
 
 @test "it has a yellow foreground, green background escape sequence variable" {
-  [ "$YELLOWF_GREENB" == "\[\033[42;33m\]" ]
+  [ "$YELLOWF_GREENB" == "\033[42;33m" ]
 }
 
 @test "it has a yellow foreground, yellow background escape sequence variable" {
-  [ "$YELLOWF_YELLOWB" == "\[\033[43;33m\]" ]
+  [ "$YELLOWF_YELLOWB" == "\033[43;33m" ]
 }
 
 @test "it has a yellow foreground, blue background escape sequence variable" {
-  [ "$YELLOWF_BLUEB" == "\[\033[44;33m\]" ]
+  [ "$YELLOWF_BLUEB" == "\033[44;33m" ]
 }
 
 @test "it has a yellow foreground, magenta background escape sequence variable" {
-  [ "$YELLOWF_MAGENTAB" == "\[\033[45;33m\]" ]
+  [ "$YELLOWF_MAGENTAB" == "\033[45;33m" ]
 }
 
 @test "it has a yellow foreground, cyan background escape sequence variable" {
-  [ "$YELLOWF_CYANB" == "\[\033[46;33m\]" ]
+  [ "$YELLOWF_CYANB" == "\033[46;33m" ]
 }
 
 @test "it has a blue foreground, black background escape sequence variable" {
-  [ "$BLUEF_BLACKB" == "\[\033[40;34m\]" ]
+  [ "$BLUEF_BLACKB" == "\033[40;34m" ]
 }
 
 @test "it has a blue foreground, red background escape sequence variable" {
-  [ "$BLUEF_REDB" == "\[\033[41;34m\]" ]
+  [ "$BLUEF_REDB" == "\033[41;34m" ]
 }
 
 @test "it has a blue foreground, green background escape sequence variable" {
-  [ "$BLUEF_GREENB" == "\[\033[42;34m\]" ]
+  [ "$BLUEF_GREENB" == "\033[42;34m" ]
 }
 
 @test "it has a blue foreground, yellow background escape sequence variable" {
-  [ "$BLUEF_YELLOWB" == "\[\033[43;34m\]" ]
+  [ "$BLUEF_YELLOWB" == "\033[43;34m" ]
 }
 
 @test "it has a blue foreground, blue background escape sequence variable" {
-  [ "$BLUEF_BLUEB" == "\[\033[44;34m\]" ]
+  [ "$BLUEF_BLUEB" == "\033[44;34m" ]
 }
 
 @test "it has a blue foreground, magenta background escape sequence variable" {
-  [ "$BLUEF_MAGENTAB" == "\[\033[45;34m\]" ]
+  [ "$BLUEF_MAGENTAB" == "\033[45;34m" ]
 }
 
 @test "it has a blue foreground, cyan background escape sequence variable" {
-  [ "$BLUEF_CYANB" == "\[\033[46;34m\]" ]
+  [ "$BLUEF_CYANB" == "\033[46;34m" ]
 }
 
 @test "it has a magenta foreground, black background escape sequence variable" {
-  [ "$MAGENTAF_BLACKB" == "\[\033[40;35m\]" ]
+  [ "$MAGENTAF_BLACKB" == "\033[40;35m" ]
 }
 
 @test "it has a magenta foreground, red background escape sequence variable" {
-  [ "$MAGENTAF_REDB" == "\[\033[41;35m\]" ]
+  [ "$MAGENTAF_REDB" == "\033[41;35m" ]
 }
 
 @test "it has a magenta foreground, green background escape sequence variable" {
-  [ "$MAGENTAF_GREENB" == "\[\033[42;35m\]" ]
+  [ "$MAGENTAF_GREENB" == "\033[42;35m" ]
 }
 
 @test "it has a magenta foreground, yellow background escape sequence variable" {
-  [ "$MAGENTAF_YELLOWB" == "\[\033[43;35m\]" ]
+  [ "$MAGENTAF_YELLOWB" == "\033[43;35m" ]
 }
 
 @test "it has a magenta foreground, blue background escape sequence variable" {
-  [ "$MAGENTAF_BLUEB" == "\[\033[44;35m\]" ]
+  [ "$MAGENTAF_BLUEB" == "\033[44;35m" ]
 }
 
 @test "it has a magenta foreground, magenta background escape sequence variable" {
-  [ "$MAGENTAF_MAGENTAB" == "\[\033[45;35m\]" ]
+  [ "$MAGENTAF_MAGENTAB" == "\033[45;35m" ]
 }
 
 @test "it has a magenta foreground, cyan background escape sequence variable" {
-  [ "$MAGENTAF_CYANB" == "\[\033[46;35m\]" ]
+  [ "$MAGENTAF_CYANB" == "\033[46;35m" ]
 }
 
 @test "it has a cyan foreground, black background  escape sequence variable" {
-  [ "$CYANF_BLACKB" == "\[\033[40;36m\]" ]
+  [ "$CYANF_BLACKB" == "\033[40;36m" ]
 }
 
 @test "it has a cyan foreground, red background  escape sequence variable" {
-  [ "$CYANF_REDB" == "\[\033[41;36m\]" ]
+  [ "$CYANF_REDB" == "\033[41;36m" ]
 }
 
 @test "it has a cyan foreground, green background  escape sequence variable" {
-  [ "$CYANF_GREENB" == "\[\033[42;36m\]" ]
+  [ "$CYANF_GREENB" == "\033[42;36m" ]
 }
 
 @test "it has a cyan foreground, yellow background  escape sequence variable" {
-  [ "$CYANF_YELLOWB" == "\[\033[43;36m\]" ]
+  [ "$CYANF_YELLOWB" == "\033[43;36m" ]
 }
 
 @test "it has a cyan foreground, blue background  escape sequence variable" {
-  [ "$CYANF_BLUEB" == "\[\033[44;36m\]" ]
+  [ "$CYANF_BLUEB" == "\033[44;36m" ]
 }
 
 @test "it has a cyan foreground, magenta background  escape sequence variable" {
-  [ "$CYANF_MAGENTAB" == "\[\033[45;36m\]" ]
+  [ "$CYANF_MAGENTAB" == "\033[45;36m" ]
 }
 
 @test "it has a cyan foreground, cyan background  escape sequence variable" {
-  [ "$CYANF_CYANB" == "\[\033[46;36m\]" ]
+  [ "$CYANF_CYANB" == "\033[46;36m" ]
 }
 
 @test "it has a black function to colorize text" {

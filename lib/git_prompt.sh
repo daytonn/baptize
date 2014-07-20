@@ -1,13 +1,13 @@
 if [[ -z ${GPULL_ICON+x} ]]; then
-  GPULL_ICON="\[ ⇣ \]"
+  GPULL_ICON=" ⇣ "
 fi
 
 if [[ -z ${GPUSH_ICON+x} ]]; then
-  GPUSH_ICON="\[ ⇡ \]"
+  GPUSH_ICON=" ⇡ "
 fi
 
 if [[ -z ${GCLEAN_ICON+x} ]]; then
-  GCLEAN_ICON="\[ ✓ \]"
+  GCLEAN_ICON=" ✓ "
 fi
 
 if [[ -z ${GDIRTY_COLOR+x} ]]; then
@@ -63,12 +63,12 @@ function git_stats_count {
     local modified=`echo -e "$status" | egrep -o "^\s?M" | wc -l | tr -d ' '`
     local added=`echo -e "$status" | egrep -o "^\?\?" | wc -l | tr -d ' '`
     local deleted=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
-    local separator="${GSTATS_SEPERATOR_COLOR}:"
-    status_prompt+="$GMODIFIED_COLOR $modified"
+    local separator="\[${GSTATS_SEPERATOR_COLOR}\]:"
+    status_prompt+="\[$GMODIFIED_COLOR\] $modified"
     status_prompt+="$separator"
-    status_prompt+="$GADDED_COLOR$added"
+    status_prompt+="\[$GADDED_COLOR\]$added"
     status_prompt+="$separator"
-    status_prompt+="$GDELETED_COLOR$deleted$CEND"
+    status_prompt+="\[$GDELETED_COLOR\]$deleted$CEND"
   fi
   printf "$status_prompt"
 }
@@ -111,7 +111,7 @@ function git_prompt {
     local status_color=`git_status_color "$full_status"`
     local git_wd=`git_wd`
 
-    PS1="$PROMPT_ICON$stats_count$status_icon$status_color$branch$CEND$PROMPT_COLOR$git_wd$PROMPT_ARROW$CEND "
+    PS1="\[${PROMPT_ICON_COLOR}\]\[${PROMPT_ICON}\]${stats_count}${status_icon}\[${status_color}\]${branch}\[${PROMPT_COLOR}\]${git_wd}\[${PROMPT_ARROW}\]\[${CEND}\] "
   else
     PS1="$PROMPT"
   fi

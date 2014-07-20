@@ -35,7 +35,7 @@ load test_helper
 }
 
 @test "it sets a prompt arrow" {
-  [ "$PROMPT_ARROW" == "\[❯  \]" ]
+  [ "$PROMPT_ARROW" == "\[❯ \]" ]
 }
 
 @test "it defers if a prompt arrow variable is already set" {
@@ -65,7 +65,7 @@ load test_helper
 }
 
 @test "it sets a prompt variable" {
-  [ "$PROMPT" == "$PROMPT_ICON_COLOR$PROMPT_ICON$PROMPT_COLOR$PROMPT_CONTENT$PROMPT_ARROW$CEND" ]
+  [ "$PROMPT" == "$PROMPT_ICON_COLOR$PROMPT_ICON$PROMPT_COLOR$PROMPT_CONTENT$PROMPT_ARROW$CEND " ]
 }
 
 @test "it defers if a prompt variable is already set" {
