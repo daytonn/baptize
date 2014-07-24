@@ -3,6 +3,8 @@ baptize
 
 Sure, your shell is bourne again... but is it baptized?
 
+![](https://raw.githubusercontent.com/daytonn/baptize/master/jesus-loves-baptize.png)
+
 About
 -----
 baptize is a small bash framework for making sweet prompts that Jesus would be proud of. Baptize aims to be a shareable, testable, and configurable way to share common terminal environment customizations.
