@@ -179,5 +179,5 @@ MOCK_BEHIND_STATUS="## master...origin/master [behind 1]\nA  something\n M somet
 @test "git_wd returns the PWD when short path is no" {
   GSHORT_PATH="no"
   git_wd
-  [ "$GWD" = " $PWD " ]
+  [ "$GWD" = " \w " ]
 }

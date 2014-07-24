@@ -71,7 +71,7 @@ function git_wd {
       fi
     done
   else
-    wd="$PWD"
+    wd="\w"
   fi
   GWD=" $wd "
 }
