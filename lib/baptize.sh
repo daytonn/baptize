@@ -43,7 +43,7 @@ function __baptize_reload {
 function __baptize_config {
   local cmd="$1"
 
-  if [ "$cmd" ]; then
+  if [ "$cmd" ] && [ "$cmd" != "show" ]; then
     if [ "$cmd" == "init" ]; then
       if [ -f "$BAPTIZE_CONFIG" ]; then
         echo "$BAPTIZE_CONFIG already exists"
