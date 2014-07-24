@@ -2,6 +2,9 @@
 
 load test_helper
 
+MOCK_STATUS="## master\nA  something\n M something\n D something\n?? something"
+MOCK_BEHIND_STATUS="## master...origin/master [behind 1]\nA  something\n M something\n D something\n?? something"
+
 @test "it has a show stats variable" {
   [ "$GSHOW_STATS" == "yes" ]
 }
@@ -119,16 +122,15 @@ load test_helper
 
 @test "git_stats_count returns a modified count in a formatted status block" {
   local expected_prompt
-  local separator="\[${GSTATS_SEPERATOR_COLOR}\]:"
+  GSTATS_COUNT=""
   expected_prompt+="\[$GMODIFIED_COLOR\] 1"
-  expected_prompt+="$separator"
-  expected_prompt+="\[$GADDED_COLOR\]1"
-  expected_prompt+="$separator"
-  expected_prompt+="\[$GDELETED_COLOR\]1\[$CEND\]"
+  expected_prompt+="\[$GSTATS_SEPERATOR_COLOR\]$GSTATS_SEPERATOR"
+  expected_prompt+="\[$GADDED_COLOR\]2"
+  expected_prompt+="\[$GSTATS_SEPERATOR_COLOR\]$GSTATS_SEPERATOR"
+  expected_prompt+="\[$GDELETED_COLOR\]1 \[$CEND\]"
+  git_stats_count "$MOCK_STATUS"
 
-  run git_stats_count " M something\n D something\n?? something"
-  [ "$status" -eq 0 ]
-  [ "$output" = `printf "$expected_prompt"` ]
+  [ "$GSTATS_COUNT" = "$expected_prompt" ]
 }
 
 @test "git_stats_count returns an empty string when clean" {
@@ -139,50 +141,43 @@ load test_helper
 
 @test "git_stats_count returns an empty_string when show status is no" {
   GSHOW_STATS="no"
-  run git_stats_count " M something\n D something\n?? something"
+  run git_stats_count "$MOCK_STATUS"
   [ "$status" -eq 0 ]
   [ "$output" = "" ]
 }
 
 @test "git_status_icon returns the clean icon when the repo is clean" {
-  run git_status_icon "working directory clean"
-  [ "$status" -eq 0 ]
-  [ "$output" = `printf "$GCLEAN_COLOR$GCLEAN_ICON"` ]
+  git_status_icon "## master"
+  [ "$GSTATUS_ICON" = "$GCLEAN_COLOR$GCLEAN_ICON" ]
 }
 
 @test "git_status_icon returns the push icon when the repo is dirty" {
-  run git_status_icon ""
-  [ "$status" -eq 0 ]
-  [ "$output" = `printf "$GMODIFIED_COLOR$GPUSH_ICON"` ]
+  git_status_icon "$MOCK_STATUS"
+  [ "$GSTATUS_ICON" = "$GMODIFIED_COLOR$GPUSH_ICON" ]
 }
 
 @test "git_status_icon returns the pull icon and the clean icon when the remote has changes but the working directory is clean" {
-  run git_status_icon "Your branch is behind but your working directory clean"
-  [ "$status" -eq 0 ]
-  [ "$output" = `printf "$GCLEAN_COLOR$GCLEAN_ICON$GMODIFIED_COLOR$GPULL_ICON$CEND"` ]
+  git_status_icon "## master...origin/master [behind 1]"
+  [ "$GSTATUS_ICON" = "$GMODIFIED_COLOR$GPULL_ICON$CEND$GCLEAN_COLOR$GCLEAN_ICON" ]
 }
 
 @test "git_status_icon returns the pull icon and the push icon when the remote has changes and the working directory is dirty" {
-  run git_status_icon "Your branch is behind"
-  [ "$status" -eq 0 ]
-  [ "$output" = `printf "$GMODIFIED_COLOR$GPUSH_ICON$GMODIFIED_COLOR$GPULL_ICON$CEND"` ]
+  git_status_icon "$MOCK_BEHIND_STATUS"
+  [ "$GSTATUS_ICON" = "$GMODIFIED_COLOR$GPUSH_ICON$GMODIFIED_COLOR$GPULL_ICON$CEND" ]
 }
 
 @test "git_project_name function returns the git project folder name" {
-  run git_project_name
-  [ "$status" -eq 0 ]
-  [ "$output" = "baptize" ]
+  git_project_name
+  [ "$GPROJECT_NAME" = "baptize" ]
 }
 
 @test "git_wd removes everything preceding the git root in the path" {
-  run git_wd
-  [ "$status" -eq 0 ]
-  [ "$output" = " baptize " ]
+  git_wd
+  [ "$GWD" = " baptize " ]
 }
 
 @test "git_wd returns the PWD when short path is no" {
   GSHORT_PATH="no"
-  run git_wd
-  [ "$status" -eq 0 ]
-  [ "$output" = " $PWD " ]
+  git_wd
+  [ "$GWD" = " $PWD " ]
 }

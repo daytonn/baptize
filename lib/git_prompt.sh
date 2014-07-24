@@ -42,48 +42,54 @@ if [[ -z ${GSTATS_SEPERATOR_COLOR+x} ]]; then
   GSTATS_SEPERATOR_COLOR="$BLUEF_YELLOWB"
 fi
 
+GSTATUS_COLOR=""
+GWD=""
+GSTATS_COUNT=""
+GSTATUS_ICON=""
+GPROJECT_NAME=""
+
 function is_git_repository {
   git branch > /dev/null 2>&1
 }
 
 function git_wd {
   local dir="$PWD"
-  local project_name=`git_project_name`
   local path_found="no"
   local wd
 
+  git_project_name
+
   if [ $GSHORT_PATH == "yes" ]; then
-    wd="$project_name"
+    wd="$GPROJECT_NAME"
     IFS="/" read -ra ADDR <<< "$dir"
     for i in "${ADDR[@]}"; do
       if [ "$path_found" == "yes" ]; then
         wd="$wd/$i"
       fi
-      if [ "$i" == "$project_name" ]; then
+      if [ "$i" == "$GPROJECT_NAME" ]; then
         path_found="yes"
       fi
     done
   else
     wd="$PWD"
   fi
-  printf " $wd "
+  GWD=" $wd "
 }
 
 function git_stats_count {
   local status="$1"
-  local status_prompt
-  if [ -n "$status" ] && [ $GSHOW_STATS == "yes" ]; then
+  GSTATS_COUNT=""
+  if [[ `echo -e "$status" | wc -l | tr -d ' '` != "1" ]] && [ $GSHOW_STATS == "yes" ]; then
     local modified=`echo -e "$status" | egrep -o "^\s?M" | wc -l | tr -d ' '`
-    local added=`echo -e "$status" | egrep -o "^\?\?" | wc -l | tr -d ' '`
+    local added=`echo -e "$status" | egrep -o "^(\?\?|A)" | wc -l | tr -d ' '`
     local deleted=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
-    local separator="\[${GSTATS_SEPERATOR_COLOR}\]${GSTATS_SEPERATOR}"
-    status_prompt+="\[$GMODIFIED_COLOR\] $modified"
-    status_prompt+="$separator"
-    status_prompt+="\[$GADDED_COLOR\]$added"
-    status_prompt+="$separator"
-    status_prompt+="\[$GDELETED_COLOR\]$deleted\[$CEND\]"
+
+    GSTATS_COUNT+="\[$GMODIFIED_COLOR\] $modified"
+    GSTATS_COUNT+="\[$GSTATS_SEPERATOR_COLOR\]$GSTATS_SEPERATOR"
+    GSTATS_COUNT+="\[$GADDED_COLOR\]$added"
+    GSTATS_COUNT+="\[$GSTATS_SEPERATOR_COLOR\]$GSTATS_SEPERATOR"
+    GSTATS_COUNT+="\[$GDELETED_COLOR\]$deleted \[$CEND\]"
   fi
-  printf "$status_prompt"
 }
 
 function git_status_icon {
@@ -91,40 +97,38 @@ function git_status_icon {
   local icon
   local behind
 
-  if [[ "$status" == *"Your branch is behind"* ]]; then
+  if [[ -n "`echo -e "$status" | egrep "behind"`" ]]; then
     behind+="$GMODIFIED_COLOR$GPULL_ICON$CEND"
   fi
 
-  if [[ "$status" == *"working directory clean"* ]]; then
-    icon+="$GCLEAN_COLOR$GCLEAN_ICON$behind"
+  if [[ `echo -e "$status" | wc -l | tr -d ' '` == "1" ]]; then
+    icon+="$behind$GCLEAN_COLOR$GCLEAN_ICON"
   else
     icon+="$GMODIFIED_COLOR$GPUSH_ICON$behind"
   fi
 
-  printf "$icon"
+  GSTATUS_ICON="$icon"
 }
 
 function git_status_color {
   local status="$1"
-
-  if [[ "$status" == *"working directory clean"* ]]; then
-    printf "$GCLEAN_COLOR"
+  if [[ `echo -e "$status" | wc -l | tr -d ' '` == "1" ]]; then
+    GSTATUS_COLOR="$GCLEAN_COLOR"
   else
-    printf "$GMODIFIED_COLOR"
+    GSTATUS_COLOR="$GMODIFIED_COLOR"
   fi
 }
 
 function git_prompt {
   if is_git_repository ; then
-    local status=`git status -s`
-    local full_status=`git status`
-    local branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null) "
-    local stats_count=`git_stats_count "$status"`
-    local status_icon=`git_status_icon "$full_status"`
-    local status_color=`git_status_color "$full_status"`
-    local git_wd=`git_wd`
+    local status=`git status -sb --porcelain`
+    local branch="`echo -e "$status" | egrep -o "##\s\w+" | tr -d "## "` "
+    git_stats_count "$status"
+    git_status_icon "$status"
+    git_status_color "$status"
+    git_wd
 
-    PS1="\[${PROMPT_ICON_COLOR}\]\[${PROMPT_ICON}\]${stats_count}${status_icon}\[${status_color}\]${branch}\[${PROMPT_COLOR}\]${git_wd}\[${PROMPT_ARROW}\]\[${CEND}\] "
+    PS1="\[$PROMPT_ICON_COLOR\]\[$PROMPT_ICON\]$GSTATS_COUNT$GSTATUS_ICON\[$GSTATUS_COLOR\]$branch\[$PROMPT_COLOR\]$GWD\[$PROMPT_ARROW\]\[$CEND\] "
   else
     PS1="$PROMPT"
   fi
@@ -144,7 +148,7 @@ function git_project_name {
     fi
     dir="${dir%/*}"
   done
-  printf "$project_name"
+  GPROJECT_NAME="$project_name"
 }
 
 export PROMPT_COMMAND="git_prompt"

@@ -31,11 +31,11 @@ if [[ -z ${PROMPT_2_ARROW+x} ]]; then
 fi
 
 if [[ -z ${PROMPT+x} ]]; then
-  PROMPT="\[${PROMPT_ICON_COLOR}\]\[${PROMPT_ICON}\]\[${PROMPT_COLOR}\]${PROMPT_CONTENT}\[${PROMPT_ARROW}\]\[${CEND}\] "
+  PROMPT="\[$PROMPT_ICON_COLOR\]\[$PROMPT_ICON\]\[$PROMPT_COLOR\]$PROMPT_CONTENT\[$PROMPT_ARROW\]\[$CEND\] "
 fi
 
 if [[ -z ${PROMPT_2+x} ]]; then
-  PROMPT_2="\[${PROMPT_2_COLOR}\]\[${PROMPT_2_ARROW}\]\[${CEND}\] "
+  PROMPT_2="\[$PROMPT_2_COLOR\]\[$PROMPT_2_ARROW\]\[$CEND\] "
 fi
 
 PS1="$PROMPT"
