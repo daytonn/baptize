@@ -1,3 +1,7 @@
+if [[ -z ${GSHOW_STATS+x} ]]; then
+  GSHOW_STATS="yes"
+fi
+
 if [[ -z ${GPULL_ICON+x} ]]; then
   GPULL_ICON=" ⇣ "
 fi
@@ -59,7 +63,7 @@ function git_wd {
 function git_stats_count {
   local status="$1"
   local status_prompt
-  if [ -n "$status" ]; then
+  if [ -n "$status" ] && [ $GSHOW_STATS == "yes" ]; then
     local modified=`echo -e "$status" | egrep -o "^\s?M" | wc -l | tr -d ' '`
     local added=`echo -e "$status" | egrep -o "^\?\?" | wc -l | tr -d ' '`
     local deleted=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`

@@ -2,6 +2,16 @@
 
 load test_helper
 
+@test "it has a show stats variable" {
+  [ -n "$GSHOW_STATS" ]
+}
+
+@test "it defers if a show stats variable is already set" {
+  GSHOW_STATS="no"
+  source "$ROOT/lib/git_prompt.sh"
+  [ "$GSHOW_STATS" == "no" ]
+}
+
 @test "it has a dirty color variable" {
   [ -n "$GDIRTY_COLOR" ]
 }
@@ -113,6 +123,13 @@ load test_helper
 
 @test "git_stats_count returns an empty string when clean" {
   run git_stats_count ""
+  [ "$status" -eq 0 ]
+  [ "$output" = "" ]
+}
+
+@test "git_stats_count returns an empty_string when show status is no" {
+  GSHOW_STATS="no"
+  run git_stats_count " M something\n D something\n?? something"
   [ "$status" -eq 0 ]
   [ "$output" = "" ]
 }

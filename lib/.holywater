@@ -11,6 +11,7 @@ PROMPT="\[${PROMPT_ICON_COLOR}\]\[${PROMPT_ICON}\]\[${PROMPT_COLOR}\]${PROMPT_CO
 PROMPT_2="\[${PROMPT_2_COLOR}\]\[${PROMPT_2_ARROW}\]\[${CEND}\] "
 
 # Git prompt settings
+GSHOW_STATS="yes"
 GPULL_ICON=" ⇣ "
 GPUSH_ICON=" ⇡ "
 GCLEAN_ICON=" ✓ "
