@@ -19,6 +19,7 @@ function __baptize_help {
   echo "commands:"
   echo "  reload, repent      reload baptize config"
   echo "  update, redeem      update baptize to the latest version"
+  echo "  colors              print a list of baptize colors available"
   echo "  config <command>    view/create configuration"
   echo "    usage: baptize config <command>"
   echo ""

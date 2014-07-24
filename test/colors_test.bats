@@ -426,8 +426,8 @@ load test_helper
   [ "$output" = `printf "${WHITEF_MAGENTAB}test${CEND}"` ]
 }
 
-@test "it has a whitef_lightblueb function to colorize text" {
-  run whitef_lightblueb "test"
+@test "it has a whitef_cyanb function to colorize text" {
+  run whitef_cyanb "test"
   [ "$status" -eq 0 ]
   [ "$output" = `printf "${WHITEF_CYANB}test${CEND}"` ]
 }
@@ -468,8 +468,8 @@ load test_helper
   [ "$output" = `printf "${BLACKF_MAGENTAB}test${CEND}"` ]
 }
 
-@test "it has a blackf_lightblueb function to colorize text" {
-  run blackf_lightblueb "test"
+@test "it has a blackf_cyanb function to colorize text" {
+  run blackf_cyanb "test"
   [ "$status" -eq 0 ]
   [ "$output" = `printf "${BLACKF_CYANB}test${CEND}"` ]
 }
@@ -510,8 +510,8 @@ load test_helper
   [ "$output" = `printf "${REDF_MAGENTAB}test${CEND}"` ]
 }
 
-@test "it has a redf_lightblueb function to colorize text" {
-  run redf_lightblueb "test"
+@test "it has a redf_cyanb function to colorize text" {
+  run redf_cyanb "test"
   [ "$status" -eq 0 ]
   [ "$output" = `printf "${REDF_CYANB}test${CEND}"` ]
 }
@@ -552,8 +552,8 @@ load test_helper
   [ "$output" = `printf "${GREENF_MAGENTAB}test${CEND}"` ]
 }
 
-@test "it has a greenf_lightblueb function to colorize text" {
-  run greenf_lightblueb "test"
+@test "it has a greenf_cyanb function to colorize text" {
+  run greenf_cyanb "test"
   [ "$status" -eq 0 ]
   [ "$output" = `printf "${GREENF_CYANB}test${CEND}"` ]
 }
@@ -594,8 +594,8 @@ load test_helper
   [ "$output" = `printf "${YELLOWF_MAGENTAB}test${CEND}"` ]
 }
 
-@test "it has a yellowf_lightblueb function to colorize text" {
-  run yellowf_lightblueb "test"
+@test "it has a yellowf_cyanb function to colorize text" {
+  run yellowf_cyanb "test"
   [ "$status" -eq 0 ]
   [ "$output" = `printf "${YELLOWF_CYANB}test${CEND}"` ]
 }
@@ -636,8 +636,8 @@ load test_helper
   [ "$output" = `printf "${BLUEF_MAGENTAB}test${CEND}"` ]
 }
 
-@test "it has a bluef_lightblueb function to colorize text" {
-  run bluef_lightblueb "test"
+@test "it has a bluef_cyanb function to colorize text" {
+  run bluef_cyanb "test"
   [ "$status" -eq 0 ]
   [ "$output" = `printf "${BLUEF_CYANB}test${CEND}"` ]
 }
@@ -678,8 +678,8 @@ load test_helper
   [ "$output" = `printf "${MAGENTAF_MAGENTAB}test${CEND}"` ]
 }
 
-@test "it has a magentaf_lightblueb function to colorize text" {
-  run magentaf_lightblueb "test"
+@test "it has a magentaf_cyanb function to colorize text" {
+  run magentaf_cyanb "test"
   [ "$status" -eq 0 ]
   [ "$output" = `printf "${MAGENTAF_CYANB}test${CEND}"` ]
 }
@@ -720,8 +720,8 @@ load test_helper
   [ "$output" = `printf "${CYANF_MAGENTAB}test${CEND}"` ]
 }
 
-@test "it has a cyanf_lightblueb function to colorize text" {
-  run cyanf_lightblueb "test"
+@test "it has a cyanf_cyanb function to colorize text" {
+  run cyanf_cyanb "test"
   [ "$status" -eq 0 ]
   [ "$output" = `printf "${CYANF_CYANB}test${CEND}"` ]
 }

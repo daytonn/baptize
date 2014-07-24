@@ -169,7 +169,7 @@ function whitef_magentab {
   echo -e "${WHITEF_MAGENTAB}${1}${CEND}"
 }
 
-function whitef_lightblueb {
+function whitef_cyanb {
   echo -e "${WHITEF_CYANB}${1}${CEND}"
 }
 
@@ -197,7 +197,7 @@ function blackf_magentab {
   echo -e "${BLACKF_MAGENTAB}${1}${CEND}"
 }
 
-function blackf_lightblueb {
+function blackf_cyanb {
   echo -e "${BLACKF_CYANB}${1}${CEND}"
 }
 
@@ -225,7 +225,7 @@ function redf_magentab {
   echo -e "${REDF_MAGENTAB}${1}${CEND}"
 }
 
-function redf_lightblueb {
+function redf_cyanb {
   echo -e "${REDF_CYANB}${1}${CEND}"
 }
 
@@ -253,7 +253,7 @@ function greenf_magentab {
   echo -e "${GREENF_MAGENTAB}${1}${CEND}"
 }
 
-function greenf_lightblueb {
+function greenf_cyanb {
   echo -e "${GREENF_CYANB}${1}${CEND}"
 }
 
@@ -281,7 +281,7 @@ function yellowf_magentab {
   echo -e "${YELLOWF_MAGENTAB}${1}${CEND}"
 }
 
-function yellowf_lightblueb {
+function yellowf_cyanb {
   echo -e "${YELLOWF_CYANB}${1}${CEND}"
 }
 
@@ -309,7 +309,7 @@ function bluef_magentab {
   echo -e "${BLUEF_MAGENTAB}${1}${CEND}"
 }
 
-function bluef_lightblueb {
+function bluef_cyanb {
   echo -e "${BLUEF_CYANB}${1}${CEND}"
 }
 
@@ -337,7 +337,7 @@ function magentaf_magentab {
   echo -e "${MAGENTAF_MAGENTAB}${1}${CEND}"
 }
 
-function magentaf_lightblueb {
+function magentaf_cyanb {
   echo -e "${MAGENTAF_CYANB}${1}${CEND}"
 }
 
@@ -365,7 +365,7 @@ function cyanf_magentab {
   echo -e "${CYANF_MAGENTAB}${1}${CEND}"
 }
 
-function cyanf_lightblueb {
+function cyanf_cyanb {
   echo -e "${CYANF_CYANB}${1}${CEND}"
 }
 
@@ -392,56 +392,56 @@ function __baptize_colors {
   whitef_yellowb " WHITEF_YELLOWB "
   whitef_blueb " WHITEF_BLUEB "
   whitef_magentab " WHITEF_MAGENTAB "
-  whitef_lightblueb " WHITEF_LIGHTBLUEB "
+  whitef_cyanb " WHITEF_CYANB "
   blackf_blackb " BLACKF_BLACKB "
   blackf_redb " BLACKF_REDB "
   blackf_greenb " BLACKF_GREENB "
   blackf_yellowb " BLACKF_YELLOWB "
   blackf_blueb " BLACKF_BLUEB "
   blackf_magentab " BLACKF_MAGENTAB "
-  blackf_lightblueb " BLACKF_LIGHTBLUEB "
+  blackf_cyanb " BLACKF_CYANB "
   redf_blackb " REDF_BLACKB "
   redf_redb " REDF_REDB "
   redf_greenb " REDF_GREENB "
   redf_yellowb " REDF_YELLOWB "
   redf_blueb " REDF_BLUEB "
   redf_magentab " REDF_MAGENTAB "
-  redf_lightblueb " REDF_LIGHTBLUEB "
+  redf_cyanb " REDF_CYANB "
   greenf_blackb " GREENF_BLACKB "
   greenf_redb " GREENF_REDB "
   greenf_greenb " GREENF_GREENB "
   greenf_yellowb " GREENF_YELLOWB "
   greenf_blueb " GREENF_BLUEB "
   greenf_magentab " GREENF_MAGENTAB "
-  greenf_lightblueb " GREENF_LIGHTBLUEB "
+  greenf_cyanb " GREENF_CYANB "
   yellowf_blackb " YELLOWF_BLACKB "
   yellowf_redb " YELLOWF_REDB "
   yellowf_greenb " YELLOWF_GREENB "
   yellowf_yellowb " YELLOWF_YELLOWB "
   yellowf_blueb " YELLOWF_BLUEB "
   yellowf_magentab " YELLOWF_MAGENTAB "
-  yellowf_lightblueb " YELLOWF_LIGHTBLUEB "
+  yellowf_cyanb " YELLOWF_CYANB "
   bluef_blackb " BLUEF_BLACKB "
   bluef_redb " BLUEF_REDB "
   bluef_greenb " BLUEF_GREENB "
   bluef_yellowb " BLUEF_YELLOWB "
   bluef_blueb " BLUEF_BLUEB "
   bluef_magentab " BLUEF_MAGENTAB "
-  bluef_lightblueb " BLUEF_LIGHTBLUEB "
+  bluef_cyanb " BLUEF_CYANB "
   magentaf_blackb " MAGENTAF_BLACKB "
   magentaf_redb " MAGENTAF_REDB "
   magentaf_greenb " MAGENTAF_GREENB "
   magentaf_yellowb " MAGENTAF_YELLOWB "
   magentaf_blueb " MAGENTAF_BLUEB "
   magentaf_magentab " MAGENTAF_MAGENTAB "
-  magentaf_lightblueb " MAGENTAF_LIGHTBLUEB "
+  magentaf_cyanb " MAGENTAF_CYANB "
   cyanf_blackb " CYANF_BLACKB "
   cyanf_redb " CYANF_REDB "
   cyanf_greenb " CYANF_GREENB "
   cyanf_yellowb " CYANF_YELLOWB "
   cyanf_blueb " CYANF_BLUEB "
   cyanf_magentab " CYANF_MAGENTAB "
-  cyanf_lightblueb " CYANF_LIGHTBLUEB "
+  cyanf_cyanb " CYANF_CYANB "
   echo -e "$CEND"
 }
 
