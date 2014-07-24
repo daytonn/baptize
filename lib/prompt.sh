@@ -38,5 +38,9 @@ if [[ -z ${PROMPT_2+x} ]]; then
   PROMPT_2="\\[$PROMPT_2_COLOR\\]\\[$PROMPT_2_ARROW\\]\\[$CEND\\] "
 fi
 
+function set_prompt {
+  PS1="\\[$PROMPT_ICON_COLOR\\]\\[$PROMPT_ICON\\]\\[$PROMPT_COLOR\\]$PROMPT_CONTENT\\[$PROMPT_ARROW\\]\\[$CEND\\] "
+}
+
 PS1="$PROMPT"
 PS2="$PROMPT_2"

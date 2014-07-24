@@ -130,7 +130,7 @@ function git_prompt {
 
     PS1="\\[$PROMPT_ICON_COLOR\\]\\[$PROMPT_ICON\\]$GSTATS_COUNT\\[$GSTATUS_ICON\\]\\[$GSTATUS_COLOR\\]$branch\\[$PROMPT_COLOR\\]$GWD\\[$PROMPT_ARROW\\]\\[$CEND\\] "
   else
-    PS1="$PROMPT"
+    set_prompt
   fi
 }
 
