@@ -3,7 +3,7 @@
 load test_helper
 
 @test "it has a show stats variable" {
-  [ -n "$GSHOW_STATS" ]
+  [ "$GSHOW_STATS" == "yes" ]
 }
 
 @test "it defers if a show stats variable is already set" {
@@ -13,7 +13,7 @@ load test_helper
 }
 
 @test "it has a short path variable" {
-  [ -n "$GSHORT_PATH" ]
+  [ "$GSHORT_PATH" == "yes" ]
 }
 
 @test "it defers if a short path variable is already set" {
@@ -22,18 +22,8 @@ load test_helper
   [ "$GSHORT_PATH" == "no" ]
 }
 
-@test "it has a dirty color variable" {
-  [ -n "$GDIRTY_COLOR" ]
-}
-
-@test "it defers if a dirty color variable is already set" {
-  GDIRTY_COLOR=""
-  source "$ROOT/lib/git_prompt.sh"
-  [ "$GDIRTY_COLOR" == "" ]
-}
-
 @test "it has a clean color variable" {
-  [ -n "$GCLEAN_COLOR" ]
+  [ "$GCLEAN_COLOR" == "$BLUEF_GREENB" ]
 }
 
 @test "it defers if a clean color variable is already set" {
@@ -43,7 +33,7 @@ load test_helper
 }
 
 @test "it has a modified color variable" {
-  [ -n "$GMODIFIED_COLOR" ]
+  [ "$GMODIFIED_COLOR" == "$BLUEF_YELLOWB" ]
 }
 
 @test "it defers a modified color variable is already set" {
@@ -53,7 +43,7 @@ load test_helper
 }
 
 @test "it has an added color variable" {
-  [ -n "$GADDED_COLOR" ]
+  [ "$GADDED_COLOR" == "$GREENF_YELLOWB" ]
 }
 
 @test "it defers if an added color variable is already set" {
@@ -63,7 +53,7 @@ load test_helper
 }
 
 @test "it has a deleted color variable" {
-  [ -n "$GDELETED_COLOR" ]
+  [ "$GDELETED_COLOR" == "$REDF_YELLOWB" ]
 }
 
 @test "it defers if a deleted color variable is already set" {
@@ -72,8 +62,18 @@ load test_helper
   [ "$GDELETED_COLOR" == "" ]
 }
 
+@test "it has a stats separator variable" {
+  [ $GSTATS_SEPERATOR == ":" ]
+}
+
+@test "it defers if a stats separator variable is already set" {
+  GSTATS_SEPERATOR=""
+  source "$ROOT/lib/git_prompt.sh"
+  [ "$GSTATS_SEPERATOR" == "" ]
+}
+
 @test "it has a stats separator color variable" {
-  [ -n "$GSTATS_SEPERATOR_COLOR" ]
+  [ "$GSTATS_SEPERATOR_COLOR" == "$BLUEF_YELLOWB" ]
 }
 
 @test "it defers if a stats separator color variable is already set" {

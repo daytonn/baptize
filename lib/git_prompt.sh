@@ -18,10 +18,6 @@ if [[ -z ${GCLEAN_ICON+x} ]]; then
   GCLEAN_ICON=" ✓ "
 fi
 
-if [[ -z ${GDIRTY_COLOR+x} ]]; then
-  GDIRTY_COLOR="$BLUEF_YELLOWB"
-fi
-
 if [[ -z ${GCLEAN_COLOR+x} ]]; then
   GCLEAN_COLOR="$BLUEF_GREENB"
 fi
@@ -36,6 +32,10 @@ fi
 
 if [[ -z ${GDELETED_COLOR+x} ]]; then
   GDELETED_COLOR="$REDF_YELLOWB"
+fi
+
+if [[ -z ${GSTATS_SEPERATOR+x} ]]; then
+  GSTATS_SEPERATOR=":"
 fi
 
 if [[ -z ${GSTATS_SEPERATOR_COLOR+x} ]]; then
@@ -76,7 +76,7 @@ function git_stats_count {
     local modified=`echo -e "$status" | egrep -o "^\s?M" | wc -l | tr -d ' '`
     local added=`echo -e "$status" | egrep -o "^\?\?" | wc -l | tr -d ' '`
     local deleted=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
-    local separator="\[${GSTATS_SEPERATOR_COLOR}\]:"
+    local separator="\[${GSTATS_SEPERATOR_COLOR}\]${GSTATS_SEPERATOR}"
     status_prompt+="\[$GMODIFIED_COLOR\] $modified"
     status_prompt+="$separator"
     status_prompt+="\[$GADDED_COLOR\]$added"
