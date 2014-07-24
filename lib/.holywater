@@ -12,6 +12,7 @@ PROMPT_2="\[${PROMPT_2_COLOR}\]\[${PROMPT_2_ARROW}\]\[${CEND}\] "
 
 # Git prompt settings
 GSHOW_STATS="yes"
+GSHORT_PATH="yes"
 GPULL_ICON=" ⇣ "
 GPUSH_ICON=" ⇡ "
 GCLEAN_ICON=" ✓ "

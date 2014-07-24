@@ -12,6 +12,16 @@ load test_helper
   [ "$GSHOW_STATS" == "no" ]
 }
 
+@test "it has a short path variable" {
+  [ -n "$GSHORT_PATH" ]
+}
+
+@test "it defers if a short path variable is already set" {
+  GSHORT_PATH="no"
+  source "$ROOT/lib/git_prompt.sh"
+  [ "$GSHORT_PATH" == "no" ]
+}
+
 @test "it has a dirty color variable" {
   [ -n "$GDIRTY_COLOR" ]
 }
@@ -168,4 +178,11 @@ load test_helper
   run git_wd
   [ "$status" -eq 0 ]
   [ "$output" = " baptize " ]
+}
+
+@test "git_wd returns the PWD when short path is no" {
+  GSHORT_PATH="no"
+  run git_wd
+  [ "$status" -eq 0 ]
+  [ "$output" = " $PWD " ]
 }

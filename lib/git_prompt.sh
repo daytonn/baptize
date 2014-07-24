@@ -2,6 +2,10 @@ if [[ -z ${GSHOW_STATS+x} ]]; then
   GSHOW_STATS="yes"
 fi
 
+if [[ -z ${GSHORT_PATH+x} ]]; then
+  GSHORT_PATH="yes"
+fi
+
 if [[ -z ${GPULL_ICON+x} ]]; then
   GPULL_ICON=" ⇣ "
 fi
@@ -46,17 +50,22 @@ function git_wd {
   local dir="$PWD"
   local project_name=`git_project_name`
   local path_found="no"
-  local wd="$project_name"
+  local wd
 
-  IFS="/" read -ra ADDR <<< "$dir"
-  for i in "${ADDR[@]}"; do
-    if [ "$path_found" == "yes" ]; then
-      wd="$wd/$i"
-    fi
-    if [ "$i" == "$project_name" ]; then
-      path_found="yes"
-    fi
-  done
+  if [ $GSHORT_PATH == "yes" ]; then
+    wd="$project_name"
+    IFS="/" read -ra ADDR <<< "$dir"
+    for i in "${ADDR[@]}"; do
+      if [ "$path_found" == "yes" ]; then
+        wd="$wd/$i"
+      fi
+      if [ "$i" == "$project_name" ]; then
+        path_found="yes"
+      fi
+    done
+  else
+    wd="$PWD"
+  fi
   printf " $wd "
 }
 
