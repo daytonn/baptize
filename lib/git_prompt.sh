@@ -84,11 +84,11 @@ function git_stats_count {
     local added=`echo -e "$status" | egrep -o "^(\?\?|A)" | wc -l | tr -d ' '`
     local deleted=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
 
-    GSTATS_COUNT+="\[$GMODIFIED_COLOR\] $modified"
-    GSTATS_COUNT+="\[$GSTATS_SEPERATOR_COLOR\]$GSTATS_SEPERATOR"
-    GSTATS_COUNT+="\[$GADDED_COLOR\]$added"
-    GSTATS_COUNT+="\[$GSTATS_SEPERATOR_COLOR\]$GSTATS_SEPERATOR"
-    GSTATS_COUNT+="\[$GDELETED_COLOR\]$deleted \[$CEND\]"
+    GSTATS_COUNT+="\\[$GMODIFIED_COLOR\\] $modified"
+    GSTATS_COUNT+="\\[$GSTATS_SEPERATOR_COLOR\\]$GSTATS_SEPERATOR"
+    GSTATS_COUNT+="\\[$GADDED_COLOR\\]$added"
+    GSTATS_COUNT+="\\[$GSTATS_SEPERATOR_COLOR\\]$GSTATS_SEPERATOR"
+    GSTATS_COUNT+="\\[$GDELETED_COLOR\\]$deleted \\[$CEND\\]"
   fi
 }
 
@@ -128,7 +128,7 @@ function git_prompt {
     git_status_color "$status"
     git_wd
 
-    PS1="\[$PROMPT_ICON_COLOR\]\[$PROMPT_ICON\]$GSTATS_COUNT$GSTATUS_ICON\[$GSTATUS_COLOR\]$branch\[$PROMPT_COLOR\]$GWD\[$PROMPT_ARROW\]\[$CEND\] "
+    PS1="\\[$PROMPT_ICON_COLOR\\]\\[$PROMPT_ICON\\]$GSTATS_COUNT\\[$GSTATUS_ICON\\]\\[$GSTATUS_COLOR\\]$branch\\[$PROMPT_COLOR\\]$GWD\\[$PROMPT_ARROW\\]\\[$CEND\\] "
   else
     PS1="$PROMPT"
   fi
