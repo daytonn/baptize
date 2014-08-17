@@ -31,7 +31,7 @@ function __baptize_help {
 
 function __baptize_update {
   cd "$LIB/.."
-  git pull origin matser
+  git pull origin master
   __baptize_reload
   cd - > /dev/null 2>&1
 }
