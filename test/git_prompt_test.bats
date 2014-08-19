@@ -66,23 +66,23 @@ MOCK_BEHIND_STATUS="## master...origin/master [behind 1]\nA  something\n M somet
 }
 
 @test "it has a stats separator variable" {
-  [ $GSTATS_SEPERATOR == ":" ]
+  [ $GSTATS_SEPARATOR == ":" ]
 }
 
 @test "it defers if a stats separator variable is already set" {
-  GSTATS_SEPERATOR=""
+  GSTATS_SEPARATOR=""
   source "$ROOT/lib/git_prompt.sh"
-  [ "$GSTATS_SEPERATOR" == "" ]
+  [ "$GSTATS_SEPARATOR" == "" ]
 }
 
 @test "it has a stats separator color variable" {
-  [ "$GSTATS_SEPERATOR_COLOR" == "$BLUEF_YELLOWB" ]
+  [ "$GSTATS_SEPARATOR_COLOR" == "$BLUEF_YELLOWB" ]
 }
 
 @test "it defers if a stats separator color variable is already set" {
-  GSTATS_SEPERATOR_COLOR=""
+  GSTATS_SEPARATOR_COLOR=""
   source "$ROOT/lib/git_prompt.sh"
-  [ "$GSTATS_SEPERATOR_COLOR" == "" ]
+  [ "$GSTATS_SEPARATOR_COLOR" == "" ]
 }
 
 @test "it has a pull icon" {
@@ -124,9 +124,9 @@ MOCK_BEHIND_STATUS="## master...origin/master [behind 1]\nA  something\n M somet
   local expected_prompt
   GSTATS_COUNT=""
   expected_prompt+="\[$GMODIFIED_COLOR\] 1"
-  expected_prompt+="\[$GSTATS_SEPERATOR_COLOR\]$GSTATS_SEPERATOR"
+  expected_prompt+="\[$GSTATS_SEPARATOR_COLOR\]$GSTATS_SEPARATOR"
   expected_prompt+="\[$GADDED_COLOR\]2"
-  expected_prompt+="\[$GSTATS_SEPERATOR_COLOR\]$GSTATS_SEPERATOR"
+  expected_prompt+="\[$GSTATS_SEPARATOR_COLOR\]$GSTATS_SEPARATOR"
   expected_prompt+="\[$GDELETED_COLOR\]1 \[$CEND\]"
   git_stats_count "$MOCK_STATUS"
 

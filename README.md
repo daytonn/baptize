@@ -84,7 +84,7 @@ This variable determines whether or not the status "stats" will be shown in your
 
 #### GSTATS_SEPARATOR
 
-This variable sets the character that separates the stat count numbers. By default it is set to: `GSTATS_SEPERATOR_COLOR=":"`
+This variable sets the character that separates the stat count numbers. By default it is set to: `GSTATS_SEPARATOR_COLOR=":"`
 
 #### GSHORT_PATH
 
@@ -119,9 +119,9 @@ This sets the color of the _added_ file count in the git stats. By default this 
 
 This sets the color of the _deleted_ file count in the git stats. By default this is set to: `GDELETED_COLOR="$REDF_YELLOWB"`. Set this to any of the available baptize colors. To see a list of available colors use `baptize colors`.
 
-#### GSTATS_SEPERATOR_COLOR
+#### GSTATS_SEPARATOR_COLOR
 
-This sets  the color of the `GSTATS_SEPARATOR` symbol in the git stats count. By default this is set to: `GSTATS_SEPERATOR_COLOR="$BLUEF_YELLOWB"`. Set this to any of the available baptize colors. To see a list of available colors use `baptize colors`.
+This sets  the color of the `GSTATS_SEPARATOR` symbol in the git stats count. By default this is set to: `GSTATS_SEPARATOR_COLOR="$BLUEF_YELLOWB"`. Set this to any of the available baptize colors. To see a list of available colors use `baptize colors`.
 
 Colors
 ------

@@ -34,12 +34,12 @@ if [[ -z ${GDELETED_COLOR+x} ]]; then
   GDELETED_COLOR="$REDF_YELLOWB"
 fi
 
-if [[ -z ${GSTATS_SEPERATOR+x} ]]; then
-  GSTATS_SEPERATOR=":"
+if [[ -z ${GSTATS_SEPARATOR+x} ]]; then
+  GSTATS_SEPARATOR=":"
 fi
 
-if [[ -z ${GSTATS_SEPERATOR_COLOR+x} ]]; then
-  GSTATS_SEPERATOR_COLOR="$BLUEF_YELLOWB"
+if [[ -z ${GSTATS_SEPARATOR_COLOR+x} ]]; then
+  GSTATS_SEPARATOR_COLOR="$BLUEF_YELLOWB"
 fi
 
 GSTATUS_COLOR=""
@@ -85,9 +85,9 @@ function git_stats_count {
     local deleted=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
 
     GSTATS_COUNT+="\\[$GMODIFIED_COLOR\\] $modified"
-    GSTATS_COUNT+="\\[$GSTATS_SEPERATOR_COLOR\\]$GSTATS_SEPERATOR"
+    GSTATS_COUNT+="\\[$GSTATS_SEPARATOR_COLOR\\]$GSTATS_SEPARATOR"
     GSTATS_COUNT+="\\[$GADDED_COLOR\\]$added"
-    GSTATS_COUNT+="\\[$GSTATS_SEPERATOR_COLOR\\]$GSTATS_SEPERATOR"
+    GSTATS_COUNT+="\\[$GSTATS_SEPARATOR_COLOR\\]$GSTATS_SEPARATOR"
     GSTATS_COUNT+="\\[$GDELETED_COLOR\\]$deleted \\[$CEND\\]"
   fi
 }

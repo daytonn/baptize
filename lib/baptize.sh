@@ -36,7 +36,7 @@ function __baptize_help {
 
 function __baptize_update {
   cd "$LIB/.."
-  git pull origin matser
+  git pull origin master
   __baptize_reload
   cd - > /dev/null 2>&1
 }
@@ -85,7 +85,7 @@ function __baptize_config {
     echo -e "${GMODIFIED_COLOR}GMODIFIED_COLOR${CEND}"
     echo -e "${GADDED_COLOR}GADDED_COLOR${CEND}"
     echo -e "${GDELETED_COLOR}GDELETED_COLOR${CEND}"
-    echo -e "${GSTATS_SEPERATOR_COLOR}GSTATS_SEPERATOR_COLOR${CEND}"
+    echo -e "${GSTATS_SEPARATOR_COLOR}GSTATS_SEPARATOR_COLOR${CEND}"
   fi
 }
 
