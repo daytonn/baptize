@@ -1,5 +1,9 @@
 LIB="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+if [ -z $BAPTIZE_ROOT ]; then
+  BAPTIZE_ROOT="$HOME/.baptize"
+fi
+
 if [ -z $BAPTIZE_CONFIG ]; then
   BAPTIZE_CONFIG="$HOME/.holywater"
 fi
@@ -12,6 +16,7 @@ fi
 
 source "$LIB/prompt.sh"
 source "$LIB/git_prompt.sh"
+source "$LIB/plugins.sh"
 
 function __baptize_help {
   echo "usage: baptize <command>"
