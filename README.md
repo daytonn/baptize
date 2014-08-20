@@ -131,3 +131,12 @@ Baptize comes with a full suite of color variables necessary to create any color
 ```sh
 baptize colors
 ```
+
+Plugins
+-------
+
+Plugins are simply bash scripts placed in folders inside the `plugins` directory. Baptize will load all plugins by sourcing the `.sh` file with the name of it's plugin. For example, the barista plugin is located at `plugins/barista/barista.sh` and will automatically be sourced by baptize.
+
+List of Baptize plugins:
+
+* [Barista](http://github.com/daytonn/barista)
