@@ -91,6 +91,7 @@ function __baptize_config {
 
 function baptize {
   local cmd="$1"
+  local sub_cmd="$2"
 
   if [ -z "$cmd" ]; then
     __baptize_help
@@ -104,11 +105,16 @@ function baptize {
     fi
 
     if [ "$cmd" == "config" ]; then
-      __baptize_config "$2"
+      __baptize_config "$sub_cmd"
     fi
 
     if [ "$cmd" == "colors" ]; then
       __baptize_colors
+    fi
+
+    if [ "$cmd" == "plugin" ] && [ "$sub_cmd" == "create" ]; then
+      local plugin_name="$3"
+      __baptize_create_plugin "$plugin_name"
     fi
   fi
 }
