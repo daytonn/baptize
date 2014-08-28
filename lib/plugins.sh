@@ -12,6 +12,9 @@ function __baptize_create_plugin {
   mkdir "$plugin_name/test"
   touch "$plugin_name/$plugin_name.sh"
   touch "README.md"
+  git init
+  git add .
+  git commit -m "Initial commit"
 
   echo "$plugin_name" > "$plugin_name/README.md"
   echo "$plugin_name" | sed 's/./=/g' >> "$plugin_name/README.md"
@@ -22,6 +25,7 @@ function __baptize_create_plugin {
   echo "$(green 'created ->') $plugin_name/$plugin_name.sh"
   echo "$(green 'created ->') $plugin_name/README.md"
   echo "$(green 'created ->') $plugin_name/test/"
+  echo "$(green 'created git repository')"
 
   cd "$plugin_name"
   ls -alh
