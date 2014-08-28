@@ -12,9 +12,6 @@ function __baptize_create_plugin {
   mkdir "$plugin_name/test"
   touch "$plugin_name/$plugin_name.sh"
   touch "README.md"
-  git init
-  git add .
-  git commit -m "Initial commit"
 
   echo "$plugin_name" > "$plugin_name/README.md"
   echo "$plugin_name" | sed 's/./=/g' >> "$plugin_name/README.md"
@@ -29,6 +26,10 @@ function __baptize_create_plugin {
 
   cd "$plugin_name"
   ls -alh
+
+  git init
+  git add .
+  git commit -m "Initial commit"
 }
 
 function __baptize_load_plugins {
