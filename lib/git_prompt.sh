@@ -128,7 +128,7 @@ function git_prompt {
     git_status_color "$status"
     git_wd
 
-    PS1="\\[$PROMPT_ICON_COLOR\\]\\[$PROMPT_ICON\\]$GSTATS_COUNT\\[$GSTATUS_ICON\\]\\[$GSTATUS_COLOR\\]$branch\\[$PROMPT_COLOR\\]$GWD\\[$PROMPT_ARROW\\]\\[$CEND\\] "
+    PS1="\\[$PROMPT_ICON_COLOR\\]${PROMPT_ICON}${GSTATS_COUNT}${GSTATUS_ICON}\\[$GSTATUS_COLOR\\]$branch\\[$PROMPT_COLOR\\]${GWD}${PROMPT_ARROW}\\[$CEND\\] "
   else
     set_prompt
   fi
