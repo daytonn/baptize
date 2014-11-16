@@ -88,7 +88,7 @@ function git_stats_count {
     GSTATS_COUNT+="\\[$GSTATS_SEPARATOR_COLOR\\]$GSTATS_SEPARATOR"
     GSTATS_COUNT+="\\[$GADDED_COLOR\\]$added"
     GSTATS_COUNT+="\\[$GSTATS_SEPARATOR_COLOR\\]$GSTATS_SEPARATOR"
-    GSTATS_COUNT+="\\[$GDELETED_COLOR\\]$deleted \\[$CEND\\]"
+    GSTATS_COUNT+="\\[$GDELETED_COLOR\\]$deleted "
   fi
 }
 
@@ -98,13 +98,13 @@ function git_status_icon {
   local behind
 
   if [[ -n "`echo -e "$status" | egrep "behind"`" ]]; then
-    behind+="$GMODIFIED_COLOR$GPULL_ICON$CEND"
+    behind+="\\[${GMODIFIED_COLOR}\\]${GPULL_ICON}\\[$CEND\\]"
   fi
 
   if [[ `echo -e "$status" | wc -l | tr -d ' '` == "1" ]]; then
-    icon+="$behind$GCLEAN_COLOR$GCLEAN_ICON"
+    icon+="${behind}\\[${GCLEAN_COLOR}\\]${GCLEAN_ICON}\\[$CEND\\]"
   else
-    icon+="$GMODIFIED_COLOR$GPUSH_ICON$behind"
+    icon+="\\[${GMODIFIED_COLOR}\\]${GPUSH_ICON}\\[$CEND\\]${behind}"
   fi
 
   GSTATUS_ICON="$icon"
@@ -128,7 +128,7 @@ function git_prompt {
     git_status_color "$status"
     git_wd
 
-    PS1="\\[$PROMPT_ICON_COLOR\\]${PROMPT_ICON}${GSTATS_COUNT}${GSTATUS_ICON}\\[$GSTATUS_COLOR\\]$branch\\[$PROMPT_COLOR\\]${GWD}${PROMPT_ARROW}\\[$CEND\\] "
+    PS1="\\[$PROMPT_ICON_COLOR\\]${PROMPT_ICON}\\[$CEND\\]${GSTATS_COUNT}\\[$CEND\\]${GSTATUS_ICON}\\[$GSTATUS_COLOR\\]$branch\\[$CEND\\]\\[$PROMPT_COLOR\\]${GWD}${PROMPT_ARROW}\\[$CEND\\] "
   else
     set_prompt
   fi
