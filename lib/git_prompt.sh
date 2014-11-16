@@ -122,7 +122,7 @@ function git_status_color {
 function git_prompt {
   if is_git_repository ; then
     local status=`git status -sb --porcelain`
-    local branch="`echo -e "$status" | egrep -o "##\s(\w|-|_)+" | tr -d "## "` "
+    local branch="`echo -e "$status" | egrep -o "##\s(\w|-|_|\/)+" | tr -d "## "` "
     git_stats_count "$status"
     git_status_icon "$status"
     git_status_color "$status"
