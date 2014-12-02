@@ -1,11 +1,11 @@
 LIB="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if [ -z $BAPTIZE_ROOT ]; then
-  BAPTIZE_ROOT="$HOME/.baptize"
-fi
-
 if [ -z $BAPTIZE_CONFIG ]; then
   BAPTIZE_CONFIG="$HOME/.holywater"
+fi
+
+if [ -z $BAPTIZE_ROOT ]; then
+  BAPTIZE_ROOT="$HOME/.baptize"
 fi
 
 source "$LIB/colors.sh"
