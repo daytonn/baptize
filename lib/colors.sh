@@ -82,291 +82,315 @@ CYANF_MAGENTAB="\033[45;36m"
 CYANF_CYANB="\033[46;36m"
 
 function black {
-  echo -e "${BLACK}${1}${CEND}"
+  echo -e "${BLACK}"
 }
 
 function blackb {
-  echo -e "${BLACKB}${1}${CEND}"
+  echo -e "${BLACKB}"
 }
 
 function white {
-  echo -e "${WHITE}${1}${CEND}"
+  echo -e "${WHITE}"
 }
 
 function whiteb {
-  echo -e "${WHITEB}${1}${CEND}"
+  echo -e "${WHITEB}"
 }
 
 function red {
-  echo -e "${RED}${1}${CEND}"
+  echo -e "${RED}"
 }
 
 function redb {
-  echo -e "${REDB}${1}${CEND}"
+  echo -e "${REDB}"
 }
 
 function green {
-  echo -e "${GREEN}${1}${CEND}"
+  echo -e "${GREEN}"
 }
 
 function greenb {
-  echo -e "${GREENB}${1}${CEND}"
+  echo -e "${GREENB}"
 }
 
 function yellow {
-  echo -e "${YELLOW}${1}${CEND}"
+  echo -e "${YELLOW}"
 }
 
 function yellowb {
-  echo -e "${YELLOWB}${1}${CEND}"
+  echo -e "${YELLOWB}"
 }
 
 function blue {
-  echo -e "${BLUE}${1}${CEND}"
+  echo -e "${BLUE}"
 }
 
 function blueb {
-  echo -e "${BLUEB}${1}${CEND}"
+  echo -e "${BLUEB}"
 }
 
 function magenta {
-  echo -e "${MAGENTA}${1}${CEND}"
+  echo -e "${MAGENTA}"
 }
 
 function magentab {
-  echo -e "${MAGENTAB}${1}${CEND}"
+  echo -e "${MAGENTAB}"
 }
 
 function cyan {
-  echo -e "${CYAN}${1}${CEND}"
+  echo -e "${CYAN}"
 }
 
 function cyanb {
-  echo -e "${CYANB}${1}${CEND}"
+  echo -e "${CYANB}"
 }
 
 function whitef_blackb {
-  echo -e "${WHITEF_BLACKB}${1}${CEND}"
+  echo -e "${WHITEF_BLACKB}"
 }
 
 function whitef_redb {
-  echo -e "${WHITEF_REDB}${1}${CEND}"
+  echo -e "${WHITEF_REDB}"
 }
 
 function whitef_greenb {
-  echo -e "${WHITEF_GREENB}${1}${CEND}"
+  echo -e "${WHITEF_GREENB}"
 }
 
 function whitef_yellowb {
-  echo -e "${WHITEF_YELLOWB}${1}${CEND}"
+  echo -e "${WHITEF_YELLOWB}"
 }
 
 function whitef_blueb {
-  echo -e "${WHITEF_BLUEB}${1}${CEND}"
+  echo -e "${WHITEF_BLUEB}"
 }
 
 function whitef_magentab {
-  echo -e "${WHITEF_MAGENTAB}${1}${CEND}"
+  echo -e "${WHITEF_MAGENTAB}"
 }
 
 function whitef_cyanb {
-  echo -e "${WHITEF_CYANB}${1}${CEND}"
+  echo -e "${WHITEF_CYANB}"
 }
 
 function blackf_blackb {
-  echo -e "${BLACKF_BLACKB}${1}${CEND}"
+  echo -e "${BLACKF_BLACKB}"
 }
 
 function blackf_redb {
-  echo -e "${BLACKF_REDB}${1}${CEND}"
+  echo -e "${BLACKF_REDB}"
 }
 
 function blackf_greenb {
-  echo -e "${BLACKF_GREENB}${1}${CEND}"
+  echo -e "${BLACKF_GREENB}"
 }
 
 function blackf_yellowb {
-  echo -e "${BLACKF_YELLOWB}${1}${CEND}"
+  echo -e "${BLACKF_YELLOWB}"
 }
 
 function blackf_blueb {
-  echo -e "${BLACKF_BLUEB}${1}${CEND}"
+  echo -e "${BLACKF_BLUEB}"
 }
 
 function blackf_magentab {
-  echo -e "${BLACKF_MAGENTAB}${1}${CEND}"
+  echo -e "${BLACKF_MAGENTAB}"
 }
 
 function blackf_cyanb {
-  echo -e "${BLACKF_CYANB}${1}${CEND}"
+  echo -e "${BLACKF_CYANB}"
 }
 
 function redf_blackb {
-  echo -e "${REDF_BLACKB}${1}${CEND}"
+  echo -e "${REDF_BLACKB}"
+}
+
+function redf_whiteb {
+  echo -e "${REDF_WHITEB}"
 }
 
 function redf_redb {
-  echo -e "${REDF_REDB}${1}${CEND}"
+  echo -e "${REDF_REDB}"
 }
 
 function redf_greenb {
-  echo -e "${REDF_GREENB}${1}${CEND}"
+  echo -e "${REDF_GREENB}"
 }
 
 function redf_yellowb {
-  echo -e "${REDF_YELLOWB}${1}${CEND}"
+  echo -e "${REDF_YELLOWB}"
 }
 
 function redf_blueb {
-  echo -e "${REDF_BLUEB}${1}${CEND}"
+  echo -e "${REDF_BLUEB}"
 }
 
 function redf_magentab {
-  echo -e "${REDF_MAGENTAB}${1}${CEND}"
+  echo -e "${REDF_MAGENTAB}"
 }
 
 function redf_cyanb {
-  echo -e "${REDF_CYANB}${1}${CEND}"
+  echo -e "${REDF_CYANB}"
 }
 
 function greenf_blackb {
-  echo -e "${GREENF_BLACKB}${1}${CEND}"
+  echo -e "${GREENF_BLACKB}"
+}
+
+function greenf_whiteb {
+  echo -e "${GREENF_WHITEB}"
 }
 
 function greenf_redb {
-  echo -e "${GREENF_REDB}${1}${CEND}"
+  echo -e "${GREENF_REDB}"
 }
 
 function greenf_greenb {
-  echo -e "${GREENF_GREENB}${1}${CEND}"
+  echo -e "${GREENF_GREENB}"
 }
 
 function greenf_yellowb {
-  echo -e "${GREENF_YELLOWB}${1}${CEND}"
+  echo -e "${GREENF_YELLOWB}"
 }
 
 function greenf_blueb {
-  echo -e "${GREENF_BLUEB}${1}${CEND}"
+  echo -e "${GREENF_BLUEB}"
 }
 
 function greenf_magentab {
-  echo -e "${GREENF_MAGENTAB}${1}${CEND}"
+  echo -e "${GREENF_MAGENTAB}"
 }
 
 function greenf_cyanb {
-  echo -e "${GREENF_CYANB}${1}${CEND}"
+  echo -e "${GREENF_CYANB}"
 }
 
 function yellowf_blackb {
-  echo -e "${YELLOWF_BLACKB}${1}${CEND}"
+  echo -e "${YELLOWF_BLACKB}"
+}
+
+function yellowf_whiteb {
+  echo -e "${YELLOWF_WHITEB}"
 }
 
 function yellowf_redb {
-  echo -e "${YELLOWF_REDB}${1}${CEND}"
+  echo -e "${YELLOWF_REDB}"
 }
 
 function yellowf_greenb {
-  echo -e "${YELLOWF_GREENB}${1}${CEND}"
+  echo -e "${YELLOWF_GREENB}"
 }
 
 function yellowf_yellowb {
-  echo -e "${YELLOWF_YELLOWB}${1}${CEND}"
+  echo -e "${YELLOWF_YELLOWB}"
 }
 
 function yellowf_blueb {
-  echo -e "${YELLOWF_BLUEB}${1}${CEND}"
+  echo -e "${YELLOWF_BLUEB}"
 }
 
 function yellowf_magentab {
-  echo -e "${YELLOWF_MAGENTAB}${1}${CEND}"
+  echo -e "${YELLOWF_MAGENTAB}"
 }
 
 function yellowf_cyanb {
-  echo -e "${YELLOWF_CYANB}${1}${CEND}"
+  echo -e "${YELLOWF_CYANB}"
 }
 
 function bluef_blackb {
-  echo -e "${BLUEF_BLACKB}${1}${CEND}"
+  echo -e "${BLUEF_BLACKB}"
+}
+
+function bluef_whiteb {
+  echo -e "${BLUEF_WHITEB}"
 }
 
 function bluef_redb {
-  echo -e "${BLUEF_REDB}${1}${CEND}"
+  echo -e "${BLUEF_REDB}"
 }
 
 function bluef_greenb {
-  echo -e "${BLUEF_GREENB}${1}${CEND}"
+  echo -e "${BLUEF_GREENB}"
 }
 
 function bluef_yellowb {
-  echo -e "${BLUEF_YELLOWB}${1}${CEND}"
+  echo -e "${BLUEF_YELLOWB}"
 }
 
 function bluef_blueb {
-  echo -e "${BLUEF_BLUEB}${1}${CEND}"
+  echo -e "${BLUEF_BLUEB}"
 }
 
 function bluef_magentab {
-  echo -e "${BLUEF_MAGENTAB}${1}${CEND}"
+  echo -e "${BLUEF_MAGENTAB}"
 }
 
 function bluef_cyanb {
-  echo -e "${BLUEF_CYANB}${1}${CEND}"
+  echo -e "${BLUEF_CYANB}"
 }
 
 function magentaf_blackb {
-  echo -e "${MAGENTAF_BLACKB}${1}${CEND}"
+  echo -e "${MAGENTAF_BLACKB}"
+}
+
+function magentaf_whiteb {
+  echo -e "${MAGENTAF_WHITEB}"
 }
 
 function magentaf_redb {
-  echo -e "${MAGENTAF_REDB}${1}${CEND}"
+  echo -e "${MAGENTAF_REDB}"
 }
 
 function magentaf_greenb {
-  echo -e "${MAGENTAF_GREENB}${1}${CEND}"
+  echo -e "${MAGENTAF_GREENB}"
 }
 
 function magentaf_yellowb {
-  echo -e "${MAGENTAF_YELLOWB}${1}${CEND}"
+  echo -e "${MAGENTAF_YELLOWB}"
 }
 
 function magentaf_blueb {
-  echo -e "${MAGENTAF_BLUEB}${1}${CEND}"
+  echo -e "${MAGENTAF_BLUEB}"
 }
 
 function magentaf_magentab {
-  echo -e "${MAGENTAF_MAGENTAB}${1}${CEND}"
+  echo -e "${MAGENTAF_MAGENTAB}"
 }
 
 function magentaf_cyanb {
-  echo -e "${MAGENTAF_CYANB}${1}${CEND}"
+  echo -e "${MAGENTAF_CYANB}"
 }
 
 function cyanf_blackb {
-  echo -e "${CYANF_BLACKB}${1}${CEND}"
+  echo -e "${CYANF_BLACKB}"
+}
+
+function cyanf_whiteb {
+  echo -e "${CYANF_WHITEB}"
 }
 
 function cyanf_redb {
-  echo -e "${CYANF_REDB}${1}${CEND}"
+  echo -e "${CYANF_REDB}"
 }
 
 function cyanf_greenb {
-  echo -e "${CYANF_GREENB}${1}${CEND}"
+  echo -e "${CYANF_GREENB}"
 }
 
 function cyanf_yellowb {
-  echo -e "${CYANF_YELLOWB}${1}${CEND}"
+  echo -e "${CYANF_YELLOWB}"
 }
 
 function cyanf_blueb {
-  echo -e "${CYANF_BLUEB}${1}${CEND}"
+  echo -e "${CYANF_BLUEB}"
 }
 
 function cyanf_magentab {
-  echo -e "${CYANF_MAGENTAB}${1}${CEND}"
+  echo -e "${CYANF_MAGENTAB}"
 }
 
 function cyanf_cyanb {
-  echo -e "${CYANF_CYANB}${1}${CEND}"
+  echo -e "${CYANF_CYANB}"
 }
 
 function __baptize_colors {

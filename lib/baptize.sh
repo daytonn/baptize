@@ -2,16 +2,11 @@ LIB="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 source "$LIB/colors.sh"
 
+source "$LIB/.holywater"
+# source "$HOME/.holywater";
+
 if [ -z $BAPTIZE_ROOT ]; then
   BAPTIZE_ROOT="$HOME/.baptize"
-fi
-
-if [ -z $BAPTIZE_CONFIG ]; then
-  BAPTIZE_CONFIG="$HOME/.holywater"
-fi
-
-if [ -f "$BAPTIZE_CONFIG" ]; then
-  source "$BAPTIZE_CONFIG"
 fi
 
 source "$LIB/prompt.sh"
@@ -50,11 +45,11 @@ function __baptize_config {
 
   if [ "$cmd" ] && [ "$cmd" != "show" ]; then
     if [ "$cmd" == "init" ]; then
-      if [ -f "$BAPTIZE_CONFIG" ]; then
-        echo "$BAPTIZE_CONFIG already exists"
+      if [ -f "$HOME/.holywater" ]; then
+        echo "$HOME/.holywater already exists"
       else
-        cp "$LIB/.holywater" "$BAPTIZE_CONFIG"
-        echo "$BAPTIZE_CONFIG created"
+        cp "$LIB/.holywater" "$HOME/.holywater"
+        echo "$HOME/.holywater created"
       fi
     else
       echo "Unknown command: baptize config $cmd"

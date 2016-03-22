@@ -1,5 +1,5 @@
 if [[ -z ${GSHOW_STATS+x} ]]; then
-  GSHOW_STATS="yes"
+  GSHOW_STATS="no"
 fi
 
 if [[ -z ${GSHORT_PATH+x} ]]; then
@@ -19,27 +19,23 @@ if [[ -z ${GCLEAN_ICON+x} ]]; then
 fi
 
 if [[ -z ${GCLEAN_COLOR+x} ]]; then
-  GCLEAN_COLOR="$BLUEF_GREENB"
+  GCLEAN_COLOR="$(eval ${GCLEAN_FG}f_${GCLEAN_BG}b)"
 fi
 
 if [[ -z ${GMODIFIED_COLOR+x} ]]; then
-  GMODIFIED_COLOR="$BLUEF_YELLOWB"
-fi
-
-if [[ -z ${GADDED_COLOR+x} ]]; then
-  GADDED_COLOR="$GREENF_YELLOWB"
-fi
-
-if [[ -z ${GDELETED_COLOR+x} ]]; then
-  GDELETED_COLOR="$REDF_YELLOWB"
-fi
-
-if [[ -z ${GSTATS_SEPARATOR+x} ]]; then
-  GSTATS_SEPARATOR=":"
+  GMODIFIED_COLOR="$(eval ${GMODIFIED_FG}f_${GMODIFIED_BG}b)"
 fi
 
 if [[ -z ${GSTATS_SEPARATOR_COLOR+x} ]]; then
-  GSTATS_SEPARATOR_COLOR="$BLUEF_YELLOWB"
+  GSTATS_SEPARATOR_COLOR="$GMODIFIED_COLOR"
+fi
+
+if [[ -z ${GADDED_COLOR+x} ]]; then
+  GADDED_COLOR="$(eval ${GADDED_FG}f_${GADDED_BG}b)"
+fi
+
+if [[ -z ${GDELETED_COLOR+x} ]]; then
+  GDELETED_COLOR="$(${GDELETED_FG}f_${GDELETED_BG}b)"
 fi
 
 GSTATUS_COLOR=""
@@ -47,6 +43,9 @@ GWD=""
 GSTATS_COUNT=""
 GSTATUS_ICON=""
 GPROJECT_NAME=""
+GMODIFIED_COUNT=""
+GDELETED_COUNT=""
+GADDED_COUNT=""
 
 function is_git_repository {
   git branch > /dev/null 2>&1
@@ -76,6 +75,15 @@ function git_wd {
   GWD=" $wd "
 }
 
+function get_git_stat_counts {
+  local status="$1"
+  if [[ `echo -e "$status" | wc -l | tr -d ' '` != "1" ]] && [ $GSHOW_STATS == "yes" ]; then
+    GMODIFIED_COUNT=`echo -e "$status" | egrep -o "^\s?M" | wc -l | tr -d ' '`
+    GADDED_COUNT=`echo -e "$status" | egrep -o "^(\?\?|A)" | wc -l | tr -d ' '`
+    GDELETED_COUNT=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
+  fi
+}
+
 function git_stats_count {
   local status="$1"
   GSTATS_COUNT=""
@@ -84,11 +92,13 @@ function git_stats_count {
     local added=`echo -e "$status" | egrep -o "^(\?\?|A)" | wc -l | tr -d ' '`
     local deleted=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
 
+    local STATS_ADDED_COLOR="$(eval ${GADDED_FG}f_${GMODIFIED_BG}b)"
+    local STATS_DELETED_COLOR="$(eval ${GDELETED_FG}f_${GMODIFIED_BG}b)"
     GSTATS_COUNT+="\\[$GMODIFIED_COLOR\\] $modified"
     GSTATS_COUNT+="\\[$GSTATS_SEPARATOR_COLOR\\]$GSTATS_SEPARATOR"
-    GSTATS_COUNT+="\\[$GADDED_COLOR\\]$added"
+    GSTATS_COUNT+="\\[$STATS_ADDED_COLOR\\]$added"
     GSTATS_COUNT+="\\[$GSTATS_SEPARATOR_COLOR\\]$GSTATS_SEPARATOR"
-    GSTATS_COUNT+="\\[$GDELETED_COLOR\\]$deleted "
+    GSTATS_COUNT+="\\[$STATS_DELETED_COLOR\\]$deleted "
   fi
 }
 
@@ -98,37 +108,73 @@ function git_status_icon {
   local behind
 
   if [[ -n "`echo -e "$status" | egrep "behind"`" ]]; then
-    behind+="\\[${GMODIFIED_COLOR}\\]${GPULL_ICON}\\[$CEND\\]"
+    GSTATUS_ICON=$GPULL_ICON
   fi
 
   if [[ `echo -e "$status" | wc -l | tr -d ' '` == "1" ]]; then
     icon+="${behind}\\[${GCLEAN_COLOR}\\]${GCLEAN_ICON}\\[$CEND\\]"
+
+    GPROMPT_BEGIN="$(eval ${PROMPT_FG}f_${GCLEAN_BG}b)"
+    GSTATUS_COLOR=$GCLEAN_COLOR
+    GPROMPT_END="$(eval ${GCLEAN_BG}f_${PROMPT_BG}b)"
   else
     icon+="\\[${GMODIFIED_COLOR}\\]${GPUSH_ICON}\\[$CEND\\]${behind}"
+
+    GSTATUS_COLOR=$GMODIFIED_COLOR
+    GPROMPT_BEGIN="$(eval ${GMODIFIED_BG}f_${GMODIFIED_FG}b)"
+    GPROMPT_END="$(eval ${GMODIFIED_BG}f_${PROMPT_BG}b)"
   fi
 
   GSTATUS_ICON="$icon"
-}
-
-function git_status_color {
-  local status="$1"
-  if [[ `echo -e "$status" | wc -l | tr -d ' '` == "1" ]]; then
-    GSTATUS_COLOR="$GCLEAN_COLOR"
-  else
-    GSTATUS_COLOR="$GMODIFIED_COLOR"
-  fi
 }
 
 function git_prompt {
   if is_git_repository ; then
     local status=`git status -sb --porcelain`
     local branch="`echo -e "$status" | egrep -o "##\s(\w|-|_|\/)+" | tr -d "## "` "
-    git_stats_count "$status"
-    git_status_icon "$status"
-    git_status_color "$status"
-    git_wd
 
-    PS1="\\[$PROMPT_ICON_COLOR\\]${PROMPT_ICON}\\[$CEND\\]${GSTATS_COUNT}\\[$CEND\\]${GSTATUS_ICON}\\[$GSTATUS_COLOR\\]$branch\\[$CEND\\]\\[$PROMPT_COLOR\\]${GWD}${PROMPT_ARROW}\\[$CEND\\] "
+    if [ `echo -e "$status" | wc -l | tr -d ' '` == "1" ]; then
+      GSTATUS_BEGIN_COLOR="$(eval ${PROMPT_FG}f_${GCLEAN_BG}b)"
+      GSTATUS_END_COLOR="$(eval ${GCLEAN_BG}f_${PROMPT_BG}b)"
+    else
+      GSTATUS_BEGIN_COLOR=$(eval ${PROMPT_FG}f_${GMODIFIED_BG}b)
+      GSTATUS_END_COLOR=$(eval ${GMODIFIED_BG}f_${PROMPT_BG}b)
+    fi
+
+    PS1="\\[$PROMPT_ICON_COLOR\\]${PROMPT_ICON}\\[$GSTATUS_BEGIN_COLOR\\]"
+
+    if [ "$GSHOW_STATS" == "yes" ] && [ `echo -e "$status" | wc -l | tr -d ' '` != "1" ]; then
+      local STATS_ADDED_COLOR="$(eval ${GADDED_FG}f_${GMODIFIED_BG}b)"
+      local STATS_DELETED_COLOR="$(eval ${GDELETED_FG}f_${GMODIFIED_BG}b)"
+      GMODIFIED_COUNT=`echo -e "$status" | egrep -o "^\s?M" | wc -l | tr -d ' '`
+      GADDED_COUNT=`echo -e "$status" | egrep -o "^(\?\?|A)" | wc -l | tr -d ' '`
+      GDELETED_COUNT=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
+      PS1+=" \\[$GMODIFIED_COLOR\\]${GMODIFIED_COUNT}"
+      PS1+="${GSTATS_SEPARATOR}"
+      PS1+="\\[$STATS_ADDED_COLOR\\]${GADDED_COUNT}"
+      PS1+="${GSTATS_SEPARATOR}"
+      PS1+="\\[$STATS_DELETED_COLOR\\]${GDELETED_COUNT}"
+    fi
+
+    if [[ `echo -e "$status" | wc -l | tr -d ' '` == "1" ]]; then
+      PS1+=$GCLEAN_ICON
+    else
+      PS1+=$GPUSH_ICON
+    fi
+
+    if [[ -n "`echo -e "$status" | egrep "behind"`" ]]; then
+      PS1+=$GPULL_ICON
+    fi
+
+    PS1+="$branch"
+
+    PS1+="\\[$GSTATUS_END_COLOR\\]\\[$PROMPT_COLOR\\]${PROMPT_CONTENT}\\[$PROMPT_END_COLOR\\]\\[$CEND\\] "
+
+    # git_stats_count "$status"
+    # git_status_icon "$status"
+    # git_wd
+    # GSTATS_ARROW_COLOR="$(eval ${GMODIFIED_BG}f_${GMODIFIED_FG}b)"
+    # PS1="\\[$PROMPT_ICON_COLOR\\] ${PROMPT_ICON}\\[$CEND\\]${GPROMPT_BEGIN}${GSTATS_COUNT}\\[$GSTATS_ARROW_COLOR\\]\\[$CEND\\]${GSTATUS_ICON}\\[$GSTATUS_COLOR\\]${branch}${GPROMPT_END}\\[$CEND\\]\\[$PROMPT_COLOR\\]${GWD}\\[$(eval $PROMPT_BG)\\]\\[$CEND\\] "
   else
     set_prompt
   fi

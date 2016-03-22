@@ -1,46 +1,23 @@
-STAR_ICON="☆ "
-APPLE_ICON="  "
-HEART_ICON="❤︎ "
-
-if [[ -z ${PROMPT_ARROW+x} ]]; then
-  PROMPT_ARROW="❯ "
-fi
-
-if [[ -z ${PROMPT_COLOR+x} ]]; then
-  PROMPT_COLOR="$BLUEF_CYANB"
-fi
-
-if [[ -z ${PROMPT_ICON_COLOR+x} ]]; then
-  PROMPT_ICON_COLOR="$CYANF_BLUEB"
-fi
-
-if [[ -z ${PROMPT_ICON+x} ]]; then
-  PROMPT_ICON="$STAR_ICON"
-fi
+PROMPT_COLOR="$(eval ${PROMPT_FG}f_${PROMPT_BG}b)"
+PROMPT_ICON_COLOR="$(eval ${PROMPT_BG}f_${PROMPT_FG}b)"
+PROMPT_END_COLOR="$(eval ${PROMPT_BG})"
+PROMPT_2_COLOR="$(eval ${PROMPT_BG})"
 
 if [[ -z ${PROMPT_CONTENT+x} ]]; then
   PROMPT_CONTENT=" \w "
-fi
-
-if [[ -z ${PROMPT_2_COLOR+x} ]]; then
-  PROMPT_2_COLOR="$YELLOW"
 fi
 
 if [[ -z ${PROMPT_2_ARROW+x} ]]; then
   PROMPT_2_ARROW="❯❯ "
 fi
 
-if [[ -z ${PROMPT+x} ]]; then
-  PROMPT="\\[$PROMPT_ICON_COLOR\\]${PROMPT_ICON}\\[$PROMPT_COLOR\\]${PROMPT_CONTENT}${PROMPT_ARROW}\\[$CEND\\] "
-fi
-
-if [[ -z ${PROMPT_2+x} ]]; then
-  PROMPT_2="\\[$PROMPT_2_COLOR\\]${PROMPT_2_ARROW}\\[$CEND\\] "
-fi
-
 function set_prompt {
-  PS1="\\[$PROMPT_ICON_COLOR\\]${PROMPT_ICON}\\[$PROMPT_COLOR\\]${PROMPT_CONTENT}${PROMPT_ARROW}\\[$CEND\\] "
+  PS1="\\[$PROMPT_ICON_COLOR\\]${PROMPT_ICON}\\[$PROMPT_COLOR\\]${PROMPT_CONTENT}\\[$PROMPT_END_COLOR\\]\\[$CEND\\] "
 }
 
-PS1="$PROMPT"
-PS2="$PROMPT_2"
+function set_prompt2 {
+  PS2="\\[$PROMPT_2_COLOR\\]${PROMPT_2_ARROW}\\[$CEND\\] "
+}
+
+set_prompt
+set_prompt2
