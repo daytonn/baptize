@@ -1,3 +1,4 @@
+GBRANCH_ICON=""
 if [[ -z ${GSHOW_STATS+x} ]]; then
   GSHOW_STATS="no"
 fi
@@ -119,7 +120,7 @@ function git_prompt {
     fi
 
     PS1+="$branch"
-
+    PS1+="${GBRANCH_ICON} "
     PS1+="\\[$GSTATUS_END_COLOR\\]\\[$PROMPT_COLOR\\]${CONTENT}\\[$PROMPT_END_COLOR\\]\\[$CEND\\] "
   else
     set_prompt
