@@ -75,61 +75,13 @@ function git_wd {
   GWD=" $wd "
 }
 
-function get_git_stat_counts {
-  local status="$1"
-  if [[ `echo -e "$status" | wc -l | tr -d ' '` != "1" ]] && [ $GSHOW_STATS == "yes" ]; then
-    GMODIFIED_COUNT=`echo -e "$status" | egrep -o "^\s?M" | wc -l | tr -d ' '`
-    GADDED_COUNT=`echo -e "$status" | egrep -o "^(\?\?|A)" | wc -l | tr -d ' '`
-    GDELETED_COUNT=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
-  fi
-}
-
-function git_stats_count {
-  local status="$1"
-  GSTATS_COUNT=""
-  if [[ `echo -e "$status" | wc -l | tr -d ' '` != "1" ]] && [ $GSHOW_STATS == "yes" ]; then
-    local modified=`echo -e "$status" | egrep -o "^\s?M" | wc -l | tr -d ' '`
-    local added=`echo -e "$status" | egrep -o "^(\?\?|A)" | wc -l | tr -d ' '`
-    local deleted=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
-
-    local STATS_ADDED_COLOR="$(eval ${GADDED_FG}f_${GMODIFIED_BG}b)"
-    local STATS_DELETED_COLOR="$(eval ${GDELETED_FG}f_${GMODIFIED_BG}b)"
-    GSTATS_COUNT+="\\[$GMODIFIED_COLOR\\] $modified"
-    GSTATS_COUNT+="\\[$GSTATS_SEPARATOR_COLOR\\]$GSTATS_SEPARATOR"
-    GSTATS_COUNT+="\\[$STATS_ADDED_COLOR\\]$added"
-    GSTATS_COUNT+="\\[$GSTATS_SEPARATOR_COLOR\\]$GSTATS_SEPARATOR"
-    GSTATS_COUNT+="\\[$STATS_DELETED_COLOR\\]$deleted "
-  fi
-}
-
-function git_status_icon {
-  local status="$1"
-  local icon
-  local behind
-
-  if [[ -n "`echo -e "$status" | egrep "behind"`" ]]; then
-    GSTATUS_ICON=$GPULL_ICON
-  fi
-
-  if [[ `echo -e "$status" | wc -l | tr -d ' '` == "1" ]]; then
-    icon+="${behind}\\[${GCLEAN_COLOR}\\]${GCLEAN_ICON}\\[$CEND\\]"
-
-    GPROMPT_BEGIN="$(eval ${PROMPT_FG}f_${GCLEAN_BG}b)"
-    GSTATUS_COLOR=$GCLEAN_COLOR
-    GPROMPT_END="$(eval ${GCLEAN_BG}f_${PROMPT_BG}b)"
-  else
-    icon+="\\[${GMODIFIED_COLOR}\\]${GPUSH_ICON}\\[$CEND\\]${behind}"
-
-    GSTATUS_COLOR=$GMODIFIED_COLOR
-    GPROMPT_BEGIN="$(eval ${GMODIFIED_BG}f_${GMODIFIED_FG}b)"
-    GPROMPT_END="$(eval ${GMODIFIED_BG}f_${PROMPT_BG}b)"
-  fi
-
-  GSTATUS_ICON="$icon"
-}
-
 function git_prompt {
   if is_git_repository ; then
+    local CONTENT=$PROMPT_CONTENT
+    if [ "$GSHORT_PATH" == "yes" ]; then
+      git_wd
+      CONTENT=$GWD
+    fi
     local status=`git status -sb --porcelain`
     local branch="`echo -e "$status" | egrep -o "##\s(\w|-|_|\/)+" | tr -d "## "` "
 
@@ -168,13 +120,7 @@ function git_prompt {
 
     PS1+="$branch"
 
-    PS1+="\\[$GSTATUS_END_COLOR\\]\\[$PROMPT_COLOR\\]${PROMPT_CONTENT}\\[$PROMPT_END_COLOR\\]\\[$CEND\\] "
-
-    # git_stats_count "$status"
-    # git_status_icon "$status"
-    # git_wd
-    # GSTATS_ARROW_COLOR="$(eval ${GMODIFIED_BG}f_${GMODIFIED_FG}b)"
-    # PS1="\\[$PROMPT_ICON_COLOR\\] ${PROMPT_ICON}\\[$CEND\\]${GPROMPT_BEGIN}${GSTATS_COUNT}\\[$GSTATS_ARROW_COLOR\\]\\[$CEND\\]${GSTATUS_ICON}\\[$GSTATUS_COLOR\\]${branch}${GPROMPT_END}\\[$CEND\\]\\[$PROMPT_COLOR\\]${GWD}\\[$(eval $PROMPT_BG)\\]\\[$CEND\\] "
+    PS1+="\\[$GSTATUS_END_COLOR\\]\\[$PROMPT_COLOR\\]${CONTENT}\\[$PROMPT_END_COLOR\\]\\[$CEND\\] "
   else
     set_prompt
   fi
