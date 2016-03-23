@@ -11,6 +11,7 @@ baptize is a small bash framework for making sweet prompts that Jesus would be p
 
 Installation
 ------------
+_Note: You'll need a [powerline patched font](https://github.com/powerline/fonts). Once the font is installed, set your terminal to use that font._
 
 ```sh
 git clone git@github.com:daytonn/baptize.git ~/.baptize
