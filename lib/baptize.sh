@@ -1,17 +1,17 @@
-LIB="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-source "$LIB/colors.sh"
-
-source "$LIB/.holywater"
-# source "$HOME/.holywater";
-
-if [ -z $BAPTIZE_ROOT ]; then
+#!/usr/bin/env bash
+if [[ -z $BAPTIZE_ROOT ]]; then
   BAPTIZE_ROOT="$HOME/.baptize"
 fi
+BAPTIZE_LIB="$BAPTIZE_ROOT/lib"
+source "$BAPTIZE_LIB/colors.sh"
+source "$BAPTIZE_LIB/.holywater"
+if [[ -f "$HOME/.holywater" ]]; then
+  source "$HOME/.holywater";
+fi
 
-source "$LIB/prompt.sh"
-source "$LIB/git_prompt.sh"
-source "$LIB/plugins.sh"
+source "$BAPTIZE_LIB/prompt.sh"
+source "$BAPTIZE_LIB/git_prompt.sh"
+source "$BAPTIZE_LIB/plugins.sh"
 
 function __baptize_help {
   echo "usage: baptize <command>"
@@ -30,14 +30,14 @@ function __baptize_help {
 }
 
 function __baptize_update {
-  cd "$LIB/.."
+  cd "$BAPTIZE_LIB/.."
   git pull origin master
   __baptize_reload
   cd - > /dev/null 2>&1
 }
 
 function __baptize_reload {
-  source "$LIB/baptize.sh"
+  source "$BAPTIZE_LIB/baptize.sh"
 }
 
 function __baptize_config {
@@ -48,7 +48,7 @@ function __baptize_config {
       if [ -f "$HOME/.holywater" ]; then
         echo "$HOME/.holywater already exists"
       else
-        cp "$LIB/.holywater" "$HOME/.holywater"
+        cp "$BAPTIZE_LIB/.holywater" "$HOME/.holywater"
         echo "$HOME/.holywater created"
       fi
     else
