@@ -8,6 +8,7 @@ source "$BAPTIZE_LIB/.holywater"
 if [[ -f "$HOME/.holywater" ]]; then
   source "$HOME/.holywater";
 fi
+source "$BAPTIZE_LIB/segment.sh"
 source "$BAPTIZE_LIB/plugins.sh"
 
 function __baptize_help {
