@@ -64,6 +64,10 @@ This sets the color of the `PROMPT_ICON`. Set this to any of the available bapti
 
 This sets the color of the continuation interactive prompt. Set this to any of the available baptize colors. To see a list of available colors use `baptize colors`.
 
+#### BAPTIZE_POWERLINE_THEME="yes"
+
+This turns on those cool pointy separators that powerline uses.
+
 ### Git Prompt Variables
 
 Baptize will change your prompt when the current directory is within a git repository. There are a few variables that let you customize the look of the prompt when in "git mode".

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 PROMPT_COLOR="$(eval ${PROMPT_FG}f_${PROMPT_BG}b)"
 PROMPT_ICON_COLOR="$(eval ${PROMPT_BG}f_${PROMPT_FG}b)"
 PROMPT_END_COLOR="$(eval ${PROMPT_BG})"

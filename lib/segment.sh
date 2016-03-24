@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+if [[ -z $BAPTIZE_POWERLINE_THEME ]]; then
+  BAPTIZE_POWERLINE_THEME="yes"
+fi
 
 function __baptize_segment {
   local content
