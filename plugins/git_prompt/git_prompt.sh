@@ -142,7 +142,7 @@ function __baptize_git_prompt {
 
     PS1=""
 
-    __baptize_segment "$PROMPT_ICON", "$PROMPT_BG" "$PROMPT_BG" "$GSTATUS_BG"
+    __baptize_segment "$PROMPT_ICON" "$PROMPT_BG" "$PROMPT_FG" "$GSTATUS_BG"
     __baptize_render_stats_segment "$status"
     __baptize_render_git_icon_segment "$status"
     __baptize_segment "$branch $GBRANCH_ICON " "$GSTATUS_FG" "$GSTATUS_BG" "$PROMPT_BG"

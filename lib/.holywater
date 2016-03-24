@@ -4,7 +4,7 @@ BAPTIZE_POWERLINE_THEME="yes"
 # Prompt settings
 PROMPT_FG="blue"
 PROMPT_BG="cyan"
-PROMPT_ICON=" ⚡ "
+PROMPT_ICON="⚡ "
 PROMPT_CONTENT=" \w "
 
 PROMPT2_COLOR="yellow"
