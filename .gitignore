@@ -1,3 +1,4 @@
 plugins/*
 !plugins/prompt
 !plugins/git_prompt
+.DS_Store
