@@ -1,25 +1,25 @@
 #!/usr/bin/env bash
-PROMPT_COLOR="$(eval ${PROMPT_FG}f_${PROMPT_BG}b)"
-PROMPT_ICON_COLOR="$(eval ${PROMPT_BG}f_${PROMPT_FG}b)"
-PROMPT_END_COLOR="$(eval ${PROMPT_BG})"
-PROMPT2_COLOR="$(eval "$PROMPT2_COLOR")"
-if [[ -z ${PROMPT_CONTENT+x} ]]; then
-  PROMPT_CONTENT=" \w "
+BAPTIZE_PROMPT_COLOR="$(eval ${BAPTIZE_PROMPT_FG}f_${BAPTIZE_PROMPT_BG}b)"
+BAPTIZE_BAPTIZE_PROMPT_ICON_COLOR="$(eval ${BAPTIZE_PROMPT_BG}f_${BAPTIZE_PROMPT_FG}b)"
+BAPTIZE_PROMPT_END_COLOR="$(eval ${BAPTIZE_PROMPT_BG})"
+BAPTIZE_PROMPT2_COLOR="$(eval "$BAPTIZE_PROMPT2_COLOR")"
+if [[ -z ${BAPTIZE_PROMPT_CONTENT+x} ]]; then
+  BAPTIZE_PROMPT_CONTENT=" \w "
 fi
 
-if [[ -z ${PROMPT_2_ARROW+x} ]]; then
-  PROMPT_2_ARROW="❯❯ "
+if [[ -z ${BAPTIZE_PROMPT_2_ARROW+x} ]]; then
+  BAPTIZE_PROMPT_2_ARROW="❯❯ "
 fi
 
 function __baptize_set_prompt {
   PS1=""
-  __baptize_segment "$PROMPT_ICON" "$PROMPT_BG" "$PROMPT_FG" "$PROMPT_BG"
-  __baptize_segment "$PROMPT_CONTENT " "$PROMPT_FG" "$PROMPT_BG"
+  __baptize_segment "$BAPTIZE_PROMPT_ICON" "$BAPTIZE_PROMPT_BG" "$BAPTIZE_PROMPT_FG" "$BAPTIZE_PROMPT_BG"
+  __baptize_segment "$BAPTIZE_PROMPT_CONTENT " "$BAPTIZE_PROMPT_FG" "$BAPTIZE_PROMPT_BG"
   PS1+=" "
 }
 
 function __baptize_set_prompt2 {
-  PS2="\\[$PROMPT2_COLOR\\]${PROMPT_2_ARROW}\\[$CEND\\] "
+  PS2="\\[$BAPTIZE_PROMPT2_COLOR\\]${BAPTIZE_PROMPT_2_ARROW}\\[$CEND\\] "
 }
 
 __baptize_set_prompt

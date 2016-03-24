@@ -1,1 +1,0 @@
-TEST_PLUGIN_LOADED="yes"

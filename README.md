@@ -44,23 +44,23 @@ baptize repent
 
 There are several variables that control your customized prompt. Simply set them in your `~/.holywater` file and then `baptize repent` and you will see your changes. Color variables can use any of the [available colors](#colors)
 
-#### PROMPT_ICON="⚡ "
+#### BAPTIZE_PROMPT_ICON="⚡ "
 
-This sets the icon at the beginning of your prompt. This is just for style to add a bit of personality. You can use emoji or unicode characters or anything you like. If you prefer not to have an icon, simply set `PROMPT_ICON` to an empty string `PROMPT_ICON=""`.
+This sets the icon at the beginning of your prompt. This is just for style to add a bit of personality. You can use emoji or unicode characters or anything you like. If you prefer not to have an icon, simply set `BAPTIZE_PROMPT_ICON` to an empty string `BAPTIZE_PROMPT_ICON=""`.
 
-#### PROMPT_CONTENT=" \w "
+#### BAPTIZE_PROMPT_CONTENT=" \w "
 
 This sets the content of your prompt. You can use any of the [prompt statment variables](http://ss64.com/bash/syntax-prompt.html). The baptize default is simply the working directory `\w` variable.
 
-#### PROMPT_FG="blue"
+#### BAPTIZE_PROMPT_FG="blue"
 
 This is the text color of your prompt.
 
-#### PROMPT_BG="cyan"
+#### BAPTIZE_PROMPT_BG="cyan"
 
-This sets the color of the `PROMPT_ICON`. Set this to any of the available baptize colors. To see a list of available colors use `baptize colors`.
+This sets the color of the `BAPTIZE_PROMPT_ICON`. Set this to any of the available baptize colors. To see a list of available colors use `baptize colors`.
 
-#### PROMPT\_2_COLOR="blue"
+#### BAPTIZE_PROMPT_2_COLOR="blue"
 
 This sets the color of the continuation interactive prompt. Set this to any of the available baptize colors. To see a list of available colors use `baptize colors`.
 
@@ -73,59 +73,59 @@ This turns on those cool pointy separators that powerline uses.
 Baptize will change your prompt when the current directory is within a git repository. There are a few variables that let you customize the look of the prompt when in "git mode".
 
 
-#### GSHOW_STATS="no"
+#### BAPTIZE_GIT_SHOW_STATS="no"
 
-This variable determines whether or not the status "stats" will be shown in your prompt. By default baptize is set to show the stats of the current git status `GSHOW_STATS="yes"`. Meaning the modified file count, the added file count, and the deleted file count. This shows up in your prompt like so: `1:2:3`. This example would mean you have 1 modified file, 2 added files, and 3 deleted files. To turn off the stats count, simply set this variable to no: `GSHOW_STATS="no"`.
+This variable determines whether or not the status "stats" will be shown in your prompt. By default baptize is set to show the stats of the current git status `BAPTIZE_GIT_SHOW_STATS="yes"`. Meaning the modified file count, the added file count, and the deleted file count. This shows up in your prompt like so: `1:2:3`. This example would mean you have 1 modified file, 2 added files, and 3 deleted files. To turn off the stats count, simply set this variable to no: `BAPTIZE_GIT_SHOW_STATS="no"`.
 
-#### GSTATS_SEPARATOR=":"
+#### BAPTIZE_GIT_STATS_SEPARATOR=":"
 
 This variable sets the character that separates the stat count numbers.
 
-#### GSHORT_PATH="yes"
+#### BAPTIZE_GIT_SHORT_PATH="yes"
 
-This variable determines whether or not to show the entire working path, or just the path from the root of the project. By default bpatize is set to only show the path from the project root `GSHORT_PATH="yes"`. This means that a project in `/Users/username/development/work/myproject` would only show `myproject` as the working directory. If you cd to a directory inside the project, that will be reflected in the prompt: `myproject/nested/directory`. To turn off the short path, simply set this variable to no: `GSHORT_PATH="no"`.
+This variable determines whether or not to show the entire working path, or just the path from the root of the project. By default bpatize is set to only show the path from the project root `BAPTIZE_GIT_SHORT_PATH="yes"`. This means that a project in `/Users/username/development/work/myproject` would only show `myproject` as the working directory. If you cd to a directory inside the project, that will be reflected in the prompt: `myproject/nested/directory`. To turn off the short path, simply set this variable to no: `BAPTIZE_GIT_SHORT_PATH="no"`.
 
-#### GPULL_ICON=" ⇣ "
+#### BAPTIZE_GIT_PULL_ICON=" ⇣ "
 
-This variable sets the icon that will display when your local branch is behind the remote branch. By default this icon is set to: `GPULL_ICON=" ⇣ "`. If you prefer not to see this icon, simply set this variable to an empty string: `GPULL_ICON=""`.
+This variable sets the icon that will display when your local branch is behind the remote branch. By default this icon is set to: `BAPTIZE_GIT_PULL_ICON=" ⇣ "`. If you prefer not to see this icon, simply set this variable to an empty string: `BAPTIZE_GIT_PULL_ICON=""`.
 
-#### GPUSH_ICON=" ⇡ "
+#### BAPTIZE_GIT_PUSH_ICON=" ⇡ "
 
-This variable sets the icon that will display when your local branch has changes to be push up to the remote. By default this icon is set to: `GPUSH_ICON=" ⇡ "`. If you prefer not to see this icon, simply set this variable to an empty string: `GPUSH_ICON=""`.
+This variable sets the icon that will display when your local branch has changes to be push up to the remote. By default this icon is set to: `BAPTIZE_GIT_PUSH_ICON=" ⇡ "`. If you prefer not to see this icon, simply set this variable to an empty string: `BAPTIZE_GIT_PUSH_ICON=""`.
 
-#### GCLEAN_ICON=" ✓ "
+#### BAPTIZE_GIT_CLEAN_ICON=" ✓ "
 
-This variable sets the icon that will display when your local branch is clean. By default this icon is set to: `GCLEAN_ICON=" ✓ "`. If you prefer not to see this icon, simply set this variable to an empty string: `GCLEAN_ICON=""`.
+This variable sets the icon that will display when your local branch is clean. By default this icon is set to: `BAPTIZE_GIT_CLEAN_ICON=" ✓ "`. If you prefer not to see this icon, simply set this variable to an empty string: `BAPTIZE_GIT_CLEAN_ICON=""`.
 
-#### GCLEAN_FG="blue"
+#### BAPTIZE_GIT_CLEAN_FG="blue"
 
 This sets the foreground color of the git prompt when the local branch is clean.
 
-#### GCLEAN_BG="green"
+#### BAPTIZE_GIT_CLEAN_BG="green"
 
 This sets the background color of the git prompt when the local branch is clean.
 
-#### GMODIFIED_FG="blue"
+#### BAPTIZE_GIT_MODIFIED_FG="blue"
 
 This sets the foreground color of the git prompt when the local branch has changes and the color of the _modified_ file count in the git stats.
 
-#### GMODIFIED_BG="yellow"
+#### BAPTIZE_GIT_MODIFIED_BG="yellow"
 
 This sets the background color of the git prompt when the local branch has changes and the color of the _modified_ file count in the git stats.
 
-#### GADDED_FG="green"
+#### BAPTIZE_GIT_ADDED_FG="green"
 
 This sets the foreground color of the _added_ file count in the git stats.
 
-#### GADDED_BG="yellow"
+#### BAPTIZE_GIT_ADDED_BG="yellow"
 
 This sets the background color of the _added_ file count in the git stats.
 
-#### GDELETED_FG="red"
+#### BAPTIZE_GIT_DELETED_FG="red"
 
 This sets the foreground color of the _deleted_ file count in the git stats.
 
-#### GDELETED_BG="yellow"
+#### BAPTIZE_GIT_DELETED_BG="yellow"
 
 This sets the background color of the _deleted_ file count in the git stats.
 
