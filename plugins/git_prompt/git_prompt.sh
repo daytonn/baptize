@@ -114,13 +114,13 @@ function __baptize_render_git_icon_segment {
   local status
   status="$1"
   if [[ "$(echo -e "$status" | wc -l | tr -d ' ')" == "1" ]]; then
-    PS1+=$GCLEAN_ICON
+    PS1+="\\[$GCLEAN_COLOR\\]$GCLEAN_ICON"
   else
-    PS1+=$GPUSH_ICON
+    PS1+="\\[$GMODIFIED_COLOR\\]$GPUSH_ICON"
   fi
 
   if [[ -n "`echo -e "$status" | egrep "behind"`" ]]; then
-    PS1+=$GPULL_ICON
+    PS1+="\\[$GMODIFIED_COLOR\\]$GPULL_ICON"
   fi
 }
 
