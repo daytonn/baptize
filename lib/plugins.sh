@@ -8,23 +8,24 @@ fi
 
 function __baptize_create_plugin {
   local plugin_name="$1"
-  mkdir "$plugin_name"
-  mkdir "$plugin_name/test"
-  touch "$plugin_name/$plugin_name.sh"
+  local plugin_root="$BAPTIZE_PLUGIN_ROOT/$1"
+  mkdir "$plugin_root"
+  mkdir "$plugin_root/test"
+  touch "$plugin_root/$plugin_name.sh"
   touch "README.md"
 
-  echo "$plugin_name" > "$plugin_name/README.md"
-  echo "$plugin_name" | sed 's/./=/g' >> "$plugin_name/README.md"
-  echo "" >> "$plugin_name/README.md"
-  echo "This plugin needs documentation." >> "$plugin_name/README.md"
+  echo "$plugin_name" > "$plugin_root/README.md"
+  echo "$plugin_name" | sed 's/./=/g' >> "$plugin_root/README.md"
+  echo "" >> "$plugin_root/README.md"
+  echo "This plugin needs documentation." >> "$plugin_root/README.md"
 
-  echo "$(green 'created ->') $plugin_name/"
-  echo "$(green 'created ->') $plugin_name/$plugin_name.sh"
-  echo "$(green 'created ->') $plugin_name/README.md"
-  echo "$(green 'created ->') $plugin_name/test/"
+  echo "$(green 'created ->') $plugin_root/"
+  echo "$(green 'created ->') $plugin_root/$plugin_name.sh"
+  echo "$(green 'created ->') $plugin_root/README.md"
+  echo "$(green 'created ->') $plugin_root/test/"
   echo "$(green 'created git repository')"
 
-  cd "$plugin_name"
+  cd "$plugin_root"
   ls -alh
 
   git init
