@@ -8,7 +8,6 @@ function __baptize_segment {
   local sep
   local fgr
   local bgr
-  local blend
 
   content="$1"
   fgr="$2"

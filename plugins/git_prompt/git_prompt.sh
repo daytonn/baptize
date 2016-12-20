@@ -1,4 +1,8 @@
+#!/usr/bin/env bash
+
 GBRANCH_ICON=""
+
+
 if [[ -z ${BAPTIZE_GIT_SHOW_STATS+x} ]]; then
   BAPTIZE_GIT_SHOW_STATS="no"
 fi
@@ -19,30 +23,9 @@ if [[ -z ${BAPTIZE_GIT_CLEAN_ICON+x} ]]; then
   BAPTIZE_GIT_CLEAN_ICON=" ✓ "
 fi
 
-if [[ -z ${GCLEAN_COLOR+x} ]]; then
-  GCLEAN_COLOR="$(eval ${BAPTIZE_GIT_CLEAN_FG}f_${BAPTIZE_GIT_CLEAN_BG}b)"
-fi
-
-if [[ -z ${GMODIFIED_COLOR+x} ]]; then
-  GMODIFIED_COLOR="$(eval ${BAPTIZE_GIT_MODIFIED_FG}f_${BAPTIZE_GIT_MODIFIED_BG}b)"
-fi
-
-if [[ -z ${BAPTIZE_GIT_STATS_SEPARATOR_COLOR+x} ]]; then
-  BAPTIZE_GIT_STATS_SEPARATOR_COLOR="$GMODIFIED_COLOR"
-fi
-
-if [[ -z ${GADDED_COLOR+x} ]]; then
-  GADDED_COLOR="$(eval ${BAPTIZE_GIT_ADDED_FG}f_${BAPTIZE_GIT_ADDED_BG}b)"
-fi
-
-if [[ -z ${GDELETED_COLOR+x} ]]; then
-  GDELETED_COLOR="$(${BAPTIZE_GIT_DELETED_FG}f_${BAPTIZE_GIT_DELETED_BG}b)"
-fi
-
-GSTATUS_COLOR=""
+GCLEAN_COLOR="$(eval ${BAPTIZE_GIT_CLEAN_FG}f_${BAPTIZE_GIT_CLEAN_BG}b)"
+GMODIFIED_COLOR="$(eval ${BAPTIZE_GIT_MODIFIED_FG}f_${BAPTIZE_GIT_MODIFIED_BG}b)"
 GWD=""
-GSTATS_COUNT=""
-GSTATUS_ICON=""
 GPROJECT_NAME=""
 GMODIFIED_COUNT=""
 GDELETED_COUNT=""
@@ -79,25 +62,13 @@ function __baptize_set_git_wd {
 function __baptize_set_status_colors {
   local status
   status="$1"
-  if [ `echo -e "$status" | wc -l | tr -d ' '` == "1" ]; then
-    GSTATUS_BEGIN_COLOR="$(eval ${BAPTIZE_PROMPT_FG}f_${BAPTIZE_GIT_CLEAN_BG}b)"
-    GSTATUS_BG="$BAPTIZE_GIT_CLEAN_BG"
-    GSTATUS_FG="$BAPTIZE_PROMPT_FG"
-    GSTATUS_END_COLOR="$(eval ${BAPTIZE_GIT_CLEAN_BG}f_${BAPTIZE_PROMPT_BG}b)"
-  else
-    GSTATUS_BEGIN_COLOR=$(eval ${BAPTIZE_PROMPT_FG}f_${BAPTIZE_GIT_MODIFIED_BG}b)
-    GSTATUS_BG="$BAPTIZE_GIT_MODIFIED_BG"
-    GSTATUS_FG="$BAPTIZE_PROMPT_FG"
-    GSTATUS_END_COLOR=$(eval ${BAPTIZE_GIT_MODIFIED_BG}f_${BAPTIZE_PROMPT_BG}b)
-  fi
+
 }
 
 function __baptize_render_stats_segment {
-  local stats
-  stats="$1"
+  local status
+  status="$1"
   if [ "$BAPTIZE_GIT_SHOW_STATS" == "yes" ] && [ `echo -e "$status" | wc -l | tr -d ' '` != "1" ]; then
-    local STATS_ADDED_COLOR="$(eval ${BAPTIZE_GIT_ADDED_FG}f_${BAPTIZE_GIT_MODIFIED_BG}b)";
-    local STATS_DELETED_COLOR="$(eval ${BAPTIZE_GIT_DELETED_FG}f_${BAPTIZE_GIT_MODIFIED_BG}b)"
     GMODIFIED_COUNT=`echo -e "$status" | egrep -o "^\s?M" | wc -l | tr -d ' '`
     GADDED_COUNT=`echo -e "$status" | egrep -o "^(\?\?|A)" | wc -l | tr -d ' '`
     GDELETED_COUNT=`echo -e "$status" | egrep -o "^\s?D" | wc -l | tr -d ' '`
@@ -138,10 +109,15 @@ function __baptize_git_prompt {
     status=$(git status -sb --porcelain)
     branch="$(echo -e "$status" | egrep -o "##\s(\w|-|_|\/)+" | tr -d "## ")"
 
-    __baptize_set_status_colors "$status"
+    if [ `echo -e "$status" | wc -l | tr -d ' '` == "1" ]; then
+      GSTATUS_BG="$BAPTIZE_GIT_CLEAN_BG"
+      GSTATUS_FG="$BAPTIZE_PROMPT_FG"
+    else
+      GSTATUS_BG="$BAPTIZE_GIT_MODIFIED_BG"
+      GSTATUS_FG="$BAPTIZE_PROMPT_FG"
+    fi
 
     PS1=""
-
     __baptize_segment "$BAPTIZE_PROMPT_ICON" "$BAPTIZE_PROMPT_BG" "$BAPTIZE_PROMPT_FG" "$GSTATUS_BG"
     __baptize_render_stats_segment "$status"
     __baptize_render_git_icon_segment "$status"
@@ -168,4 +144,8 @@ function _baptize_set_git_project_name {
   GPROJECT_NAME="$project_name"
 }
 
-export PROMPT_COMMAND="__baptize_git_prompt"
+if [[ -n "$PROMPT_COMMAND" ]]; then
+  export PROMPT_COMMAND="$PROMPT_COMMAND;__baptize_git_prompt"
+else
+  export PROMPT_COMMAND="__baptize_git_prompt"
+fi
